@@ -1,7 +1,28 @@
 body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-
-.inProgress_cardBg {
-  background-color: green;
+#root {
+  height: 100vh;
 }
+.app, .boards__section, .board__wrap, .board__section  {
+  height: 100%;
+}
+#hamburgerBtn, #profileImage {
+  height: 50px;
+  width: auto;
+}
+
+.boards__section {
+  display: flex;
+justify-content: space-between;
+  
+}
+
+.board__section {
+  padding: 10px;
+}
+.board__card {
+  background-color: white;
+}
+
+
