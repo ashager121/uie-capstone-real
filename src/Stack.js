@@ -1,5 +1,7 @@
 import React from 'react'
 import Card from './Card'
+import './index.css'
+
 
 export default function Stack() {
     return (

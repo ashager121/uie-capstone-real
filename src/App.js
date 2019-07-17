@@ -1,6 +1,6 @@
 import React from 'react';
 import Stack from './Stack';
-import './index.css'
+import './index.css';
 
 // import profile from './assetts/user.png';
 // import hamburger from './assetts/menu.png';
@@ -10,7 +10,6 @@ function App() {
     <div className="App">
       <header className="boardTitle">
         <h3 className="boardTitle__h3">Sprint Title</h3>
-        {/* <img src={profile} alt="profileBtn" id="profileBtn"></img> */}
       </header>
       <div className="boards__section ">
         <Stack />
