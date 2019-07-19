@@ -1,9 +1,6 @@
 import React from 'react';
 import Stack from './Stack';
-import './index.css';
-
-// import profile from './assetts/user.png';
-// import hamburger from './assetts/menu.png';
+import '../index.css';
 
 function App() {
   return (

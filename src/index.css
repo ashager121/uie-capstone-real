@@ -17,10 +17,25 @@ body {
 justify-content: space-between;
   
 }
-
 .board__section {
   padding: 10px;
   background-color: gray;
+  border-radius: 45;
+}
+.board__card--code {
+  border: 2px solid red;
+}
+.board__card--research {
+  border: 2px solid blue;
+}
+.board__card--design {
+  border: 2px solid green;
+}
+.board__card--testing {
+  border: 2px solid tan;
+}
+.board__card--resources {
+  border: 2px solid skyblue;
 }
 .board__card {
   background-color: white;
@@ -30,9 +45,3 @@ justify-content: space-between;
   width: 40px;
   border-radius: 100;
 }
-
-.devColor {
-  background-color: red;
-}
-
-

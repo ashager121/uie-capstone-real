@@ -1,38 +1,89 @@
 import React, { Component } from 'react';
-import Card from './Card'
-import './index.css'
+import Card from './Card.js'
+import '../index.css'
 
 export default class Stack extends Component {
     constructor() {
         super()
         this.state = {
-            tasks: [
-                {
-                    title: "Task Title"
-                },
-                {
-                    title: "Task Title2",
-                    team: "dev"
-                },
-                {
-                    title: "Task Title3"
-                }
-            ]
+            stacks: {
+                backlog: [
+                    {
+                        title: "Task Title",
+                        category: "code"
+                    },
+                    {
+                        title: "Task Title",
+                        category: "testing"
+                    },
+                    {
+                        title: "Task Title",
+                        category: "code"
+                    }
+                ],
+                assigned: [
+                    {
+                        title: "Task Title",
+                        category: "code"
+                    },
+                    {
+                        title: "Task Title",
+                        category: "code"
+                    },
+                    {
+                        title: "Task Title",
+                        category: "testing"
+                    }
+
+                ],
+                inprogress: [
+                    {
+                        title: "Task Title",
+                        category: "code"
+                    },
+                    {
+                        title: "Task Title",
+                        category: "resources"
+                    },
+                    {
+                        title: "Task Title",
+                        category: "testing"
+                    }
+
+                ],
+                complete: [
+                    {
+                        title: "Task Title",
+                        category: "resources"
+                    },
+                    {
+                        title: "Task Title",
+                        category: "research"
+                    },
+                    {
+                        title: "Task Title",
+                        category: "design"
+                    }
+
+                ]
+            }
         }
     }
+    // pass stacks as a prop
     render() {
-        var tasksList = this.state.tasks.map(function (task) {
-            return <Card task={task} />;
+        var tasksList = this.state.stacks.complete.map((task, index) => {
+            return <Card task={task} key={index} />
         })
         return (
-            <section className="board" >
+            < section className="board" >
                 <div className="board__wrap">
                     <h3>Assigned</h3>
                     <div className="board__section">
                         {tasksList}
+                        Hello
                     </div>
                 </div>
-            </section>
+            </section >
         )
     }
 }

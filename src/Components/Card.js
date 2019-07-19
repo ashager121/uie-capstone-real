@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-import './index.css';
+import '../index.css';
 
 export default class Card extends Component {
 
     getCardColor() {
-        if (this.props.task.team === 'dev') {
-            return 'devColor'
+        if (this.props.task.category === 'code') {
+            return 'board__card--code'
+        } else if (this.props.task.category === 'research') {
+            return 'board__card--research'
+        } else if (this.props.task.category === 'design') {
+            return 'board__card--design'
+        } else if (this.props.task.category === 'testing') {
+            return 'board__card--testing'
+        } else if (this.props.task.category === 'resources') {
+            return 'board__card--resources'
         }
     }
     render() {
