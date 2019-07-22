@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Stack from './Stack';
-import '../index.scss';
+import '';
 
 export default class App extends Component {
   constructor() {
