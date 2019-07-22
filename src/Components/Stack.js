@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card.js'
-import '../index.css'
+import '../index.scss'
 
 export default class Stack extends Component {
 
