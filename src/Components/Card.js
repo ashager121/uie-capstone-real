@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import '../index.css';
-import Photo from '../assets/user.png';
-import 'react-router-modal/css/react-router-modal.css';
-import { ModalContainer, ModalRoute } from 'react-router-modal';
-import { BrowserRouter, Link } from 'react-router-dom';
-
+import '../index.scss';
 
 export default class Card extends Component {
 
