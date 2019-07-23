@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import Comment from './assetts/comment.png';
-import Priority from './assetts/priority.png';
+// import Comment from './assets/comment.png';
+import Priority from './assets/priority.png';
 
 export default class Card extends Component {
 
