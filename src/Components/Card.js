@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import Index from '../index.js';
-
+import React, { Component } from './node_modules/react';
 // import Comment from './assets/comment.png';
 // import Priority from './assets/priority.png';
+import '../sass/App.scss';
 
 export default class Card extends Component {
 
