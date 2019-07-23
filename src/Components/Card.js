@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../index.scss';
 // import Comment from './assetts/comment.png';
 // import Priority from './assetts/priority.png';
 
