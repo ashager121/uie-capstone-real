@@ -4,6 +4,7 @@ import Stack from './Stack';
 
 
 
+
 export default class App extends Component {
   constructor() {
     super()
@@ -83,6 +84,12 @@ export default class App extends Component {
           <Stack tasks={this.state.stacks.inprogress} />
           <Stack tasks={this.state.stacks.complete} />
         </div>
+        <ModalRoute
+          component={this.Details}
+          path='/dashboard/details/:taskId'
+          parentPath='/dashboard/'
+        />
+
       </div >
     );
   }
