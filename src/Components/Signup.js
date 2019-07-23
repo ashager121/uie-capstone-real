@@ -1,7 +1,6 @@
-import React from "react";
-import 'react-router-modal/css/react-router-modal.css';
-// import '_signup.scss'
-// import 'index.scss';
+import React from "./node_modules/react";
+import './node_modules/react-router-modal/css/react-router-modal.css';
+import '../sass/App.scss';
 // import Default1 from './assetts/default1.png';
 // import Default2 from './assetts/default2.png';
 // import Default3 from './assetts/default3.png';
