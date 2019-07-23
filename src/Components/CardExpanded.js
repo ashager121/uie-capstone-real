@@ -1,5 +1,5 @@
 import React from 'react'
-import 'index.scss'
+import '../index.css'
 import Photo from './assetts/user.png'
 
 export default function Overlay() {

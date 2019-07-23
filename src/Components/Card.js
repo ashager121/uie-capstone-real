@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import '../index.scss';
+import '../index.css';
+// import Photo from '../assets/user.png';
+import Overlay from './CardExpanded.js';
+import 'react-router-modal/css/react-router-modal.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 
 export default class Card extends Component {
 
