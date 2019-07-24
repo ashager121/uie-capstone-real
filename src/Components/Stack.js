@@ -10,15 +10,13 @@ export default class Stack extends Component {
             return <Card task={task} key={index} />
         })
         return (
-            < section className="board" >
+            <section className="board" >
                 <div className="board__wrap">
-                    <h3>Assigned</h3>
                     <div className="board__section">
                         {tasksList}
-                        Hello
                     </div>
                 </div>
-            </section >
+            </section>
         )
     }
 }

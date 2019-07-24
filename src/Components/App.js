@@ -89,6 +89,12 @@ export default class App extends Component {
             <btn id="testingbtn">Testing</btn>
           </div>
         </div>
+        <div class="stack_title">
+          <h3>Backlog</h3>
+          <h3>Assigned</h3>
+          <h3>In-Progress</h3>
+          <h3>Completed</h3>
+        </div>
         <div className="stacks">
           <Stack tasks={this.state.stacks.backlog} />
           <Stack tasks={this.state.stacks.assigned} />
