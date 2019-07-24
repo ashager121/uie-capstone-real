@@ -76,10 +76,20 @@ export default class App extends Component {
   render() {
     return (
       <div className="App" >
-        <header className="boardTitle">
-          <h3 className="boardTitle__h3">Sprint Title</h3>
+        <header className="boardHeader">
+          <h1 className="boardHeader_dtitle">Sprint Title</h1>
+          <h3>Date Range</h3>
         </header>
-        <div className="boards__section ">
+        <div class="filters">
+          <div class= "filters__wrapper">
+            <btn id="codebtn">Code</btn>
+            <btn id="researchbtn">Research</btn>
+            <btn id="designbtn">Design</btn>
+            <btn id="resourcesbtn">Resources</btn>
+            <btn id="testingbtn">Testing</btn>
+          </div>
+        </div>
+        <div className="stacks">
           <Stack tasks={this.state.stacks.backlog} />
           <Stack tasks={this.state.stacks.assigned} />
           <Stack tasks={this.state.stacks.inprogress} />
