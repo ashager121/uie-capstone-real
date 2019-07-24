@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import Comment from './assets/comment.png';
 // import Priority from './assets/priority.png';
-import './../Sass/App.scss';
+import './../sass/App.scss';
 
 export default class Card extends Component {
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Stack from './Stack';
-import './../Sass/App.scss';
+import './../sass/App.scss';
 import { ModalRoute } from 'react-router-modal';
 
 
