@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './index.js';
-import Signin from './components/Signin';
-import Signup from './components/Signup';
+import App from './Components/App.js';
+import Signin from './Components/Signin';
+import Signup from './Components/Signup';
 import * as serviceWorker from './serviceWorker';
-import { ModalContainer } from 'react-router-modal';
+// import { ModalContainer } from 'react-router-modal';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
+// export default function Routing() {
 const routing = (
     <Router>
         <Switch>
@@ -17,6 +18,7 @@ const routing = (
         </Switch>
     </Router>
 )
+// }
 ReactDOM.render(routing, document.getElementById('root'))
 
 serviceWorker.unregister();

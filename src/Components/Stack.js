@@ -1,6 +1,6 @@
-import React, { Component } from './node_modules/react';
+import React, { Component } from 'react';
 import Card from './Card.js'
-import '../sass/App.scss';
+import './../Sass/App.scss';
 
 export default class Stack extends Component {
 

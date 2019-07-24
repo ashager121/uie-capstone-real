@@ -1,6 +1,7 @@
-import React, { Component } from './node_modules/react';
+import React, { Component } from 'react';
 import Stack from './Stack';
-import '../sass/App.scss';
+import './../Sass/App.scss';
+import { ModalRoute } from 'react-router-modal';
 
 
 
@@ -89,7 +90,7 @@ export default class App extends Component {
           path='/dashboard/details/:taskId'
           parentPath='/dashboard/'
         />
-
+        {/* <Link to=‘/dashboard/details/66’>show Details66</Link> */}
       </div >
     );
   }
