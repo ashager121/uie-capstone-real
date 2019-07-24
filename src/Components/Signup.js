@@ -1,13 +1,15 @@
 import React from "react";
+// import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 // import './node_modules/react-router-modal/css/react-router-modal.css';
 import './../sass/App.scss';
+import batonlogo from '../assets/batonlogo.svg'
 // import Default1 from './assetts/default1.png';
 // import Default2 from './assetts/default2.png';
 // import Default3 from './assetts/default3.png';
 // import Default4 from './assetts/default4.png';
 
 
-export default class Login extends React.Component {
+export default class Signup extends React.Component {
     constructor(props) {
         super(props);
 
@@ -35,58 +37,48 @@ export default class Login extends React.Component {
     render() {
         return (
 
-            // <div className="Login">
-            //     <header>
-            //         <h1>BATON</h1>
-            //         <h3>Just keep sprinting.</h3>
-            //     </header>
-            //     <form onSubmit={this.handleSubmit}>
-            //         <FormGroup controlId="email" bsSize="large">
-            //             <ControlLabel>Email</ControlLabel>
-            //             <FormControl
-            //                 autoFocus
-            //                 type="email"
-            //                 value={this.state.email}
-            //                 onChange={this.handleChange}
-            //             />
-            //         </FormGroup>
-            //         <FormGroup controlId="password" bsSize="large">
-            //             <ControlLabel>Password</ControlLabel>
-            //             <FormControl
-            //                 value={this.state.password}
-            //                 onChange={this.handleChange}
-            //                 type="password"
-            //             />
-            //         </FormGroup>
-            //         <FormGroup controlId="confirm" bsSize="large">
-            //             <ControlLabel>Confirm Password</ControlLabel>
-            //             <FormControl
-            //                 value={this.state.confirm}
-            //                 onChange={this.handleChange}
-            //                 type="password"
-            //             />
-            //         </FormGroup>
-            //         <Button
-            //             block
-            //             bsSize="large"
-            //             disabled={!this.validateForm()}
-            //             type="submit"
-            //         >
-            //             Sign In
-            //             </Button>
-            //         <Button
-            //             block
-            //             bsSize="large"
-            //             disabled={!this.validateForm()}
-            //             type="submit"
-            //         >
-            //             Sign Up
-            //             </Button>
-            //     </form>
-            // </div>
             <div>
-                sign up
-         </div>
+                <img src={batonlogo} alt="Logo" />
+
+            {/* </div>
+            <div className="Signup">
+                <form onSubmit={this.handleSubmit}>
+                    <FormGroup controlId="email" bsSize="large">
+                        <ControlLabel>Email Address</ControlLabel>
+                        <FormControl
+                            autoFocus
+                            type="email"
+                            value={this.state.email}
+                            onChange={this.handleChange}
+                        />
+                    </FormGroup>
+                </form>
+            </div>
+            ,
+            <div> */}
+
+                {/* <div className="Signup"> */}
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                            Email Address
+                                <input type="text" value={this.state.value}
+                            onChange={this.handleChange} />
+                        </label>
+                        <label>
+                            Password
+                                <input type="text" value={this.state.value}
+                            onChange={this.handleChange} />
+                        </label>
+                        <label>
+                            Confirm Password
+                                <input type="text" value={this.state.value}
+                            onChange={this.handleChange} />
+                        </label>
+                    </form>
+
+                     <button>Sign In</button>
+                     <button>Sign Up</button>
+            </div> 
         );
     }
 }
