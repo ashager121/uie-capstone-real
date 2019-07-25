@@ -5,23 +5,25 @@ import batonlogo from '../assets/batonlogo.svg'
 
 export default function Signin() {
     return (
-        <div>
+        <div className="SigninContainer">
             <img src={batonlogo} alt="Logo" />
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Email Address
+            <div className="SignIn">
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Email Address
                                 <input type="text" value={this.state.value}
-                        onChange={this.handleChange} />
-                </label>
-                <label>
-                    Password
+                            onChange={this.handleChange} />
+                    </label>
+                    <label>
+                        Password
                                 <input type="text" value={this.state.value}
-                        onChange={this.handleChange} />
-                </label>
-            </form>
+                            onChange={this.handleChange} />
+                    </label>
+                </form>
+            </div>
 
             <button>Sign In</button>
             <button>Sign Up</button>
-        </div>
+        </div >
     );
 }
