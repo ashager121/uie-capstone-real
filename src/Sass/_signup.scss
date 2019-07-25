@@ -7,16 +7,16 @@
 .SignUp {
   padding-top: 50px;
 }
-.SignUp form{
+.SignUp__form{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-label {
+.SignUp__label {
   font-size: .7rem;
   padding-top: 10px;
 }
-input {
+.SignUp__input {
   width: 100%;
   border-radius: 5px;
   background-color: $stacksBgColor;
@@ -28,14 +28,14 @@ input {
   justify-content: space-between;
   padding-top: 50px;
 }
-#signinbtn {
+#signinbtn1 {
   background-color: $dashboardBgColor;
   color: white;
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
 }
-#signupbtn {
+#signupbtn1 {
   background-color: white;
   border-radius: 5px;
   padding: 5px 20px;
