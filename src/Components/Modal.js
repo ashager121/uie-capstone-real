@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Stack from './Stack';
+// import Stack from './Stack';
 import './../sass/App.scss';
-import { ModalRoute } from 'react-router-modal';
+// import { ModalRoute } from 'react-router-modal';
 import Photo from '../assets/user.png';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 
 export default class Modal extends Component {

@@ -1,14 +1,57 @@
-@media all and (min-width: 480px) {
-    .Login {
-      padding: 60px 0;
-    }
+.SigninContainer {
+  margin: 0 auto;
+  max-width: 360px;
+  align-content: center;
+  padding-top: 100px;
+}
+.SignIn {
+  padding-top: 50px;
+}
+.SignIn form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+label {
+  font-size: .7rem;
+  padding-top: 10px;
+}
+input {
+  width: 100%;
+  border-radius: 5px;
+  background-color: $stacksBgColor;
+  border: none;
+  padding: 10px;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50px;
+}
+#signinbtn {
+  background-color: $dashboardBgColor;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+#signupbtn {
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+// @media all and (min-width: 480px) {
+//     .Login {
+//       padding: 60px 0;
+//     }
   
-    .Login form {
-      margin: 0 auto;
-      max-width: 320px;
-    }
-    .SigninContainer {
-      margin: 0 auto;
-      max-width: 320px;
-    }
-  }
+//     .Login form {
+//       margin: 0 auto;
+//       max-width: 320px;
+//     }
+//     .SigninContainer {
+//       margin: 0 auto;
+//       max-width: 320px;
+//     }
+//   }
