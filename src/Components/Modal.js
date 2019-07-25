@@ -32,8 +32,8 @@ export default class Modal extends Component {
                             timestamp: "01/01/01",
                             comment: ""
                         }
-                    ]
-                  input: "input"
+                    ],
+                    input: "input"
                 }
             }
     }
@@ -55,7 +55,7 @@ export default class Modal extends Component {
                     <div className="comments">
                         <div className="comments">
                             <img src={Photo} alt="user" />
-                            <h6>{user.name}</h6>
+                            <h6>Filler McGee</h6>
                             <p>User comment about project status or issue. Whatever they need it to be.</p>
                         </div>
                     </div>
