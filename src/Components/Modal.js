@@ -5,7 +5,38 @@ import './../sass/App.scss';
 import Photo from '../assets/user.png';
 // import PropTypes from 'prop-types';
 
+
+
 export default class Modal extends Component {
+    constructor() {
+        super()
+        this.state = //mockdata
+            {
+                task: {
+                    _id: 0,
+                    title: "Task Title",
+                    category: "code",
+                    users: [{
+                        name: "",
+                        imageUrl: "",
+                        _id: ""
+                    }],
+                    comments: [
+                        {
+                            _id: "",
+                            user: {
+                                name: "",
+                                imageUrl: "",
+                                _id: ""
+                            },
+                            timestamp: "01/01/01",
+                            comment: ""
+                        }
+                    ]
+                  input: "input"
+                }
+            }
+    }
     render() {
         return (
             <section className="board" >
@@ -24,7 +55,7 @@ export default class Modal extends Component {
                     <div className="comments">
                         <div className="comments">
                             <img src={Photo} alt="user" />
-                            <h6>User Name</h6>
+                            <h6>{user.name}</h6>
                             <p>User comment about project status or issue. Whatever they need it to be.</p>
                         </div>
                     </div>
@@ -33,3 +64,4 @@ export default class Modal extends Component {
         )
     }
 }
+
