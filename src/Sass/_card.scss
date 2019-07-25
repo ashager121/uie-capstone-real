@@ -1,0 +1,20 @@
+.board__card{
+    background-color: $dashboardBgColor;
+    border-radius: 10px;
+    margin: 5px 0px;
+}
+.board__card--code{
+    padding-left: 20px;
+}
+.board__card--research{
+    padding-left: 20px;
+}
+.board__card--design{
+    padding-left: 20px;
+}
+.board__card--resources{
+    padding-left: 20px;
+}
+.board__card--testing{
+    padding-left: 20px;
+}
