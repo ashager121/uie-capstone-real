@@ -64,9 +64,9 @@ body {
 .boardHeader{
     text-align: center;
     padding: 30px 0px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),linear-gradient(90deg, $codeColor, $researchColor, $designColor, $resourcesColor, $testingColor);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.75)),linear-gradient(90deg, $codeColor, $researchColor, $designColor, $resourcesColor, $testingColor);
 }
-.boardHeader_dtitle{
+.boardHeader_title{
     margin: 0;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -75,7 +75,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.75)),linear-gradient(90deg, $codeColor, $researchColor, $designColor, $resourcesColor, $testingColor);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.85),rgba(0, 0, 0, 0.85)),linear-gradient(90deg, $codeColor, $researchColor, $designColor, $resourcesColor, $testingColor);
 }
 .filters__wrapper{
     display: flex;

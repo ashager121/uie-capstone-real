@@ -6,7 +6,7 @@ import Modal from './Modal';
 // import {Link}from 'react-router-dom';
 import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
-
+import useravatar from "./../assets/user.svg";
 
 
 
@@ -88,8 +88,9 @@ export default class App extends Component {
     return (
       <div className="App" >
         <header className="boardHeader">
-          <h1 className="boardHeader_dtitle">Sprint Title</h1>
+          <h1 className="boardHeader_title">Sprint Title</h1>
           <h3>Date Range</h3>
+          <button id='headavatar'><img src={useravatar} alt="user menu"></img></button>
         </header>
         <div class="filters">
           <div class="filters__wrapper">
