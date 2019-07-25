@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.js';
+import App from './components/App';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
 import * as serviceWorker from './serviceWorker';
-// import { ModalContainer } from 'react-router-modal';
+import { ModalContainer } from 'react-router-modal';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
 // export default function Routing() {
@@ -16,6 +16,7 @@ const routing = (
             <Route path="/dashboard" component={App} />
             <Route path='*' component={Signup} />
         </Switch>
+        <ModalContainer />
     </Router>
 )
 // }

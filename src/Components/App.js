@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Stack from './Stack';
 import './../sass/App.scss';
 import { ModalRoute } from 'react-router-modal';
+import Modal from './Modal';
+import {Link}from 'react-router-dom';
+import 'react-router-modal/css/react-router-modal.css';
 
 
 
@@ -9,18 +12,22 @@ import { ModalRoute } from 'react-router-modal';
 export default class App extends Component {
   constructor() {
     super()
-    this.state = {
+    this.state = //mockdata
+     {
       stacks: {
         backlog: [
           {
+            _id: 1,
             title: "Task Title",
             category: "code"
           },
           {
+            _id: 2,
             title: "Task Title",
             category: "testing"
           },
           {
+            _id: 3,
             title: "Task Title",
             category: "code"
           }
@@ -89,6 +96,12 @@ export default class App extends Component {
             <btn id="testingbtn">Testing</btn>
           </div>
         </div>
+        <div class="stack_title">
+          <h3>Backlog</h3>
+          <h3>Assigned</h3>
+          <h3>In-Progress</h3>
+          <h3>Completed</h3>
+        </div>
         <div className="stacks">
           <Stack tasks={this.state.stacks.backlog} />
           <Stack tasks={this.state.stacks.assigned} />
@@ -96,12 +109,11 @@ export default class App extends Component {
           <Stack tasks={this.state.stacks.complete} />
         </div>
         <ModalRoute
-          component={this.Details}
+          component={Modal}
           path='/dashboard/details/:taskId'
           parentPath='/dashboard/'
         />
-        {/* <Link to=‘/dashboard/details/66’>show Details66</Link> */}
-      </div >
+      </div>
     );
   }
-}
+}                                                                     
