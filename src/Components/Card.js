@@ -30,7 +30,7 @@ class Card extends Component {
         return (
             <div onClick={this.opencard} className={"board__card " + this.getCardColor()}>
                 <h3>{task.title}</h3>
-                <h6>Due: 01/20</h6>
+                <h6>{task.duedate}</h6>
                 {/* <img src={Comment} alt="Comment" /> */}
                 {/* <img src={Priority} alt="Priority" /> */}
                 {/*  */}
