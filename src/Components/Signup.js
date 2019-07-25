@@ -1,6 +1,7 @@
 import React from "react";
 // import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 // import './node_modules/react-router-modal/css/react-router-modal.css';
+import {Link} from 'react-router-dom'
 import './../sass/App.scss';
 // import './../sass/_signup.scss';
 import batonlogo from '../assets/batonlogo.svg'
@@ -64,9 +65,11 @@ export default class Signup extends React.Component {
                     </form>
                     </div>
                     <div className="buttons">
-                     <button id="signinbtn">Sign In</button>
-                     <button id="signupbtn">Sign Up</button>
-                     </div>
+                        <button id="signinbtn">
+                            <Link to="/signin" style={{ textDecoration: 'none' }}>Sign In</Link>
+                        </button>
+                        <button id="signupbtn">Sign Up</button>
+                    </div>
             </div> 
         );
     }
