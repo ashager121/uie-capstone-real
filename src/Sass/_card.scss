@@ -5,16 +5,21 @@
 }
 .board__card--code{
     padding-left: 20px;
+    border: 2px solid $codeColor;
 }
 .board__card--research{
     padding-left: 20px;
+    border: 2px solid $researchColor;
 }
 .board__card--design{
     padding-left: 20px;
+    border: 2px solid $designColor;
 }
 .board__card--resources{
     padding-left: 20px;
+    border: 2px solid $resourcesColor;
 }
 .board__card--testing{
     padding-left: 20px;
+    border: 2px solid $testingColor;
 }
