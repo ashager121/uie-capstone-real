@@ -57,7 +57,7 @@ export default class App extends Component {
   {
 
   
-    gned: [
+    assigned: [
     
     title: "Task Title",
     category: "code"
@@ -72,7 +72,7 @@ export default class App extends Component {
   }
   
     
-      ogress: [
+      inprogress: [
       
       title: "Task Title",
       category: "code"
@@ -87,7 +87,7 @@ export default class App extends Component {
     }
     
       
-        lete: [
+        complete: [
         
         title: "Task Title",
         category: "resources"
