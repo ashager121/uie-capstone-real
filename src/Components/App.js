@@ -3,8 +3,9 @@ import Stack from './Stack';
 import './../sass/App.scss';
 import { ModalRoute } from 'react-router-modal';
 import Modal from './Modal';
-import {Link}from 'react-router-dom';
+// import {Link}from 'react-router-dom';
 import 'react-router-modal/css/react-router-modal.css';
+import addbtn from "./../assets/plus.svg";
 
 
 
@@ -13,72 +14,75 @@ export default class App extends Component {
   constructor() {
     super()
     this.state = //mockdata
-     {
-      stacks: {
-        backlog: [
-          {
-            _id: 1,
-            title: "Task Title",
-            category: "code"
-          },
-          {
-            _id: 2,
-            title: "Task Title",
-            category: "testing"
-          },
-          {
-            _id: 3,
-            title: "Task Title",
-            category: "code"
-          }
-        ],
-        assigned: [
-          {
-            title: "Task Title",
-            category: "code"
-          },
-          {
-            title: "Task Title",
-            category: "code"
-          },
-          {
-            title: "Task Title",
-            category: "testing"
-          }
+      {
+        stacks: {
+          backlog: [
+            {
+              _id: 0,
+              title: "Task Title",
+              category: "code",
+              // photos: "photos",
+              // comments: "comments",
+              // input: "input"
+            },
+            {
+              _id: 1,
+              title: "Task Title",
+              category: "testing"
+            },
+            {
+              _id: 2,
+              title: "Task Title",
+              category: "code"
+            }
+          ],
+          assigned: [
+            {
+              title: "Task Title",
+              category: "code"
+            },
+            {
+              title: "Task Title",
+              category: "code"
+            },
+            {
+              title: "Task Title",
+              category: "testing"
+            }
 
-        ],
-        inprogress: [
-          {
-            title: "Task Title",
-            category: "code"
-          },
-          {
-            title: "Task Title",
-            category: "resources"
-          },
-          {
-            title: "Task Title",
-            category: "testing"
-          }
+          ],
+          inprogress: [
+            {
+              title: "Task Title",
+              category: "code"
+            },
+            {
+              title: "Task Title",
+              category: "resources"
+            },
+            {
+              title: "Task Title",
+              category: "testing"
+            }
 
-        ],
-        complete: [
-          {
-            title: "Task Title",
-            category: "resources"
-          },
-          {
-            title: "Hello There",
-            category: "research"
-          },
-          {
-            title: "Task Title",
-            category: "design"
-          }
+          ],
+          complete: [
+            {
+              title: "Task Title",
+              category: "resources"
+            },
+            {
+              title: "Hello There",
+              category: "research"
+            },
+            {
+              title: "Task Title",
+              category: "design"
+            }
 
-        ]
+          ]
+        }
       }
-    }
   }
   render() {
     return (
@@ -88,7 +92,7 @@ export default class App extends Component {
           <h3>Date Range</h3>
         </header>
         <div class="filters">
-          <div class= "filters__wrapper">
+          <div class="filters__wrapper">
             <btn id="codebtn">Code</btn>
             <btn id="researchbtn">Research</btn>
             <btn id="designbtn">Design</btn>
@@ -96,11 +100,14 @@ export default class App extends Component {
             <btn id="testingbtn">Testing</btn>
           </div>
         </div>
-        <div class="stack_title">
-          <h3>Backlog</h3>
-          <h3>Assigned</h3>
-          <h3>In-Progress</h3>
-          <h3>Completed</h3>
+        <div class="stack_wrapper">
+          <h3 class="stack_title">Backlog</h3>
+          <button id="addcard">
+            <img src={addbtn} alt="add new card"></img>
+          </button>
+          <h3 class="stack_title">Assigned</h3>
+          <h3 class="stack_title">In-Progress</h3>
+          <h3 class="stack_title">Completed</h3>
         </div>
         <div className="stacks">
           <Stack tasks={this.state.stacks.backlog} />
