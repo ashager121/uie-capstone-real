@@ -21,7 +21,9 @@ export default class App extends Component {
               _id: 0,
               title: "Task Title",
               category: "code",
-
+              // photos: "photos",
+              // comments: "comments",
+              // input: "input"
             },
             {
               _id: 1,
@@ -99,13 +101,13 @@ export default class App extends Component {
           </div>
         </div>
         <div class="stack_wrapper">
-          <h3 class= "stack_title">Backlog</h3>
+          <h3 class="stack_title">Backlog</h3>
           <button id="addcard">
-              <img src={addbtn} alt="add new card"></img>
+            <img src={addbtn} alt="add new card"></img>
           </button>
-          <h3 class= "stack_title">Assigned</h3>
-          <h3 class= "stack_title">In-Progress</h3>
-          <h3 class= "stack_title">Completed</h3>
+          <h3 class="stack_title">Assigned</h3>
+          <h3 class="stack_title">In-Progress</h3>
+          <h3 class="stack_title">Completed</h3>
         </div>
         <div className="stacks">
           <Stack tasks={this.state.stacks.backlog} />

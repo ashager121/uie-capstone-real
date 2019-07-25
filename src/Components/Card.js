@@ -5,7 +5,7 @@ import './../sass/App.scss';
 // import Modal from 'react-router-modal';
 // import Photo from '../assets/user.png';
 // import PropTypes from 'prop-types';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Card extends Component {
 
@@ -22,8 +22,8 @@ class Card extends Component {
             return 'board__card--resources'
         }
     }
-    opencard= () =>{
-        this.props.history.push('/dashboard/details/'+ this.props.task._id)
+    opencard = () => {
+        this.props.history.push('/dashboard/details/' + this.props.task._id)
     }
     render() {
         const task = this.props.task;
@@ -33,6 +33,7 @@ class Card extends Component {
                 <h6>Due: 01/20</h6>
                 {/* <img src={Comment} alt="Comment" /> */}
                 {/* <img src={Priority} alt="Priority" /> */}
+                {/*  */}
             </div>
         )
     }
