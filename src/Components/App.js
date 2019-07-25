@@ -3,7 +3,7 @@ import Stack from './Stack';
 import './../sass/App.scss';
 import { ModalRoute } from 'react-router-modal';
 import Modal from './Modal';
-import { Link } from 'react-router-dom';
+// import {Link}from 'react-router-dom';
 import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
 
