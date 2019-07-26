@@ -4,7 +4,8 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import './../sass/App.scss';
 // import './../sass/_signup.scss';
-import batonlogo from '../assets/batonlogo.svg'
+import batonlogo from '../assets/batonlogo.svg';
+import useravatar from './../assets/user.svg';
 // import Default1 from './assetts/default1.png';
 // import Default2 from './assetts/default2.png';
 // import Default3 from './assetts/default3.png';
@@ -60,7 +61,15 @@ export default class Signup extends React.Component {
                             </label>
                         <input className="SignUp__input" type="text" value={this.state.value}
                             onChange={this.handleChange} />
+
+                        <label className="SignUp__label">
+                            Avatar
+                            </label>
                     </form>
+                </div>
+
+                <div className="SignUp__avatar">
+                    <img src={useravatar} alt="Avatar" />
                 </div>
 
                 <div className="buttons">
