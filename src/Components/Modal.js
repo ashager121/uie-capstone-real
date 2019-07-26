@@ -17,9 +17,9 @@ export default class Modal extends Component {
                     title: "Task Title",
                     category: "code",
                     users: [{
-                        name: "",
+                        name: "name",
                         imageUrl: "",
-                        _id: ""
+                        _id: "0"
                     }],
                     comments: [
                         {
@@ -30,7 +30,7 @@ export default class Modal extends Component {
                                 _id: ""
                             },
                             timestamp: "01/01/01",
-                            comment: ""
+                            comment: "Thank you for posting this task, we will get right on it."
                         }
                     ],
                     input: "input"
