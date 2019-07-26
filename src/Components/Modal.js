@@ -16,20 +16,21 @@ export default class Modal extends Component {
                     _id: 0,
                     title: "Task Title",
                     category: "code",
+                    state: 'Backlog',
                     users: [{
-                        name: "name",
+                        name: "George",
                         imageUrl: "",
                         _id: "0"
                     }],
                     comments: [
                         {
-                            _id: "",
+                            _id: "0",
                             user: {
-                                name: "",
+                                name: "Nigel",
                                 imageUrl: "",
-                                _id: ""
+                                _id: "0"
                             },
-                            timestamp: "01/01/01",
+                            timestamp: "Due: 01/01/01",
                             comment: "Thank you for posting this task, we will get right on it."
                         }
                     ],
@@ -43,22 +44,22 @@ export default class Modal extends Component {
                 <div className="modal__body">
                     <button>Category</button>
                     <button><img src='#' alt='priority'></img></button>
-                    <h3>Task Title</h3>
-                    <h4>Due: 01/01/01</h4>
-                    <p>Task description goes here. Scott honks are the new greatest meme and this is just placeholder text for the lulz.</p>
+                    <h3>{this.state.task.title}</h3>
+                    {/* <h4>{this.state.comments.timestamp}</h4> */}
+                    <p></p>
                     <div className="profilePhotos">
+                        {/* <img src={Photo} alt="user" />
                         <img src={Photo} alt="user" />
                         <img src={Photo} alt="user" />
                         <img src={Photo} alt="user" />
                         <img src={Photo} alt="user" />
-                        <img src={Photo} alt="user" />
-                        <img src={Photo} alt="user" />
+                        <img src={Photo} alt="user" /> */}
                     </div>
                     <div className="comments">
                         <div className="comments">
                             <img src={Photo} alt="user" />
-                            <h6>Filler McGee</h6>
-                            <p>User comment about project status or issue. Whatever they need it to be.</p>
+                            {/* <h6>{this.state.comments.name}</h6> */}
+                            {/* <p>{this.state.comments.comment}</p> */}
                         </div>
                     </div>
                 </div>

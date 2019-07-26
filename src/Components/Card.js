@@ -23,8 +23,7 @@ class Card extends Component {
         }
     }
     opencard = () => {
-        // this.props.history.push('/dashboard/details/' + this.props.task._id)
-        console.log('test')
+        this.props.history.push('/dashboard/details/' + this.props.task._id)
     }
     render() {
         const task = this.props.task;
