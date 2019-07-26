@@ -65,9 +65,11 @@ export default class Signup extends React.Component {
 
                 <div className="buttons">
                     <button id="signinbtn1">
-                        <Link to="/signin" style={{ textDecoration: 'none' }}>Sign In</Link>
+                        <Link to="/signin" style={{ textDecoration: 'none', color: 'white' }}>Sign In</Link>
                     </button>
-                    <button id="signupbtn1">Sign Up</button>
+                    <button id="signupbtn1">
+                        <Link to="/dashboard" style={{ textDecoration: 'none', color: 'black' }}>Sign Up</Link>
+                    </button>
                 </div>
             </div>
         );

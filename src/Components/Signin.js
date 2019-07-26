@@ -38,22 +38,25 @@ export default class Signin extends React.Component {
                     <form className="SignIn__form" onSubmit={this.handleSubmit}>
                         <label className="SignIn__label">
                             Email Address
-                                <input className="SignIn__input" type="text" value={this.state.value}
-                                onChange={this.handleChange} />
-                        </label>
+                                </label>
+                        <input className="SignIn__input" type="text" value={this.state.value}
+                            onChange={this.handleChange} />
+
                         <label className="SignIn__label">
                             Password
-                                <input className="SignIn__input" type="text" value={this.state.value}
-                                onChange={this.handleChange} />
-                        </label>
+                                </label>
+                        <input className="SignIn__input" type="text" value={this.state.value}
+                            onChange={this.handleChange} />
                     </form>
                 </div>
 
                 <div className="buttons">
                     <button id="signupbtn2">
-                        <Link to="/signup" style={{ textDecoration: 'none' }}>Sign Up</Link>
+                        <Link to="/signup" style={{ textDecoration: 'none', color: 'white' }}>Sign Up</Link>
                     </button>
-                    <button id="signinbtn2">Sign In</button>
+                    <button id="signinbtn2">
+                        <Link to="/dashboard" style={{ textDecoration: 'none', color: 'black' }}>Sign In</Link>
+                    </button>
                 </div>
             </div >
         );
