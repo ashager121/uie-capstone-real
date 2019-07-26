@@ -41,7 +41,9 @@ export default class Modal extends Component {
         return (
             <section className="modal__wrapper" >
                 <div className="modal__body">
-                    <h3>Assigned</h3>
+                    <button>Category</button>
+                    <button><img src='#' alt='priority'></img></button>
+                    <h3>Task Title</h3>
                     <h4>Due: 01/01/01</h4>
                     <p>Task description goes here. Scott honks are the new greatest meme and this is just placeholder text for the lulz.</p>
                     <div className="profilePhotos">
