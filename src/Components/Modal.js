@@ -8,8 +8,7 @@ import Low from '../assets/lowp.svg';
 import Med from '../assets/medp.svg';
 import High from '../assets/highp.svg';
 import Block from '../assets/blockp.svg';
-
-
+import Avatar from'./Avatar';
 
 export default class Modal extends Component {
     constructor() {
@@ -19,6 +18,7 @@ export default class Modal extends Component {
                 task: {
                     _id: 0,
                     title: "Task Title",
+                    description: "lorem ipsum whatever this is a long task description test.",
                     category: "code",
                     state: 'Backlog',
                     users: {
@@ -79,15 +79,11 @@ export default class Modal extends Component {
                         </div>
                 </div>
                     <h2>{this.state.task.title}</h2>
-                    <h4>{this.state.task.users.timestamp}</h4>
+                    <h5>{this.state.task.users.timestamp}</h5>
+                    <h3>{this.state.task.description}</h3>
                     <p></p>
-                    <div className="profilePhotos">
-                        {/* <img src={Photo} alt="user" />
-                        <img src={Photo} alt="user" />
-                        <img src={Photo} alt="user" />
-                        <img src={Photo} alt="user" />
-                        <img src={Photo} alt="user" />
-                        <img src={Photo} alt="user" /> */}
+                    <div className="AssignedUsers">
+                        {}
                     </div>
                     <div className="comments">
                         <div className="comments">
@@ -96,7 +92,6 @@ export default class Modal extends Component {
                             {this.state.task.comments.map((comment, key) => {
                                 return <p key={comment._id}>{comment.comment}</p>
                             })}
-
                         </div>
                     </div>
                 </div>
