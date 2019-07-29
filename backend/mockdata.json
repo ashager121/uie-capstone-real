@@ -1,0 +1,47 @@
+{
+  "dashboard": {
+    "name": "Sprint 1",
+    "startDate": 1563825318902,
+    "endDate": 1563826318902,
+    "backlog": {
+      "name": "Backlog",
+      "tasks": [
+        {
+          "title": "Task Name 1"
+        }
+      ]
+    },
+    "assigned": {
+      "name": "Assigned",
+      "tasks": [
+        {
+          "title": "Task Name 2"
+        }
+      ]
+    },
+    "inProgress": {
+      "name": "In Progress",
+      "tasks": [
+        {
+          "title": "Task Name 3"
+        }
+      ]
+    },
+    "complete": {
+      "name": "Completed",
+      "tasks": [
+        {
+          "title": "Task Name 4"
+        }
+      ]
+    }
+  },
+  "users": [
+    {
+      "id": 1,
+      "name": "Bob Ross",
+      "email": "bob@gmail.com",
+      "imageUrl": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzOTU5NTgxMTk2/bob-ross-9464216-1-402.jpg"
+    }
+  ]
+}

@@ -9,93 +9,95 @@ import addbtn from "./../assets/plus.svg";
 import useravatar from "./../assets/user.svg";
 // import { DragDropContext } from 'react-beautiful-dnd';
 
+import {logoutUser} from '../api/user.js'
+import {withRouter} from 'react-router-dom'
+import {getDashboard} from '../api/dashboard';
 
-export default class App extends Component {
+class App extends Component {
   constructor() {
     super()
     this.state = /*mockdata*/ {
-      stacks: {
-        backlog: [
-          {
-            _id: 0,
-            title: "Task Title",
-            category: "code"
-            // users: [{
-            //       name: "",
-            //       imageUrl: "",
-            //       _id: ""
-            //     }],
-            // comments: [
-            //   {
-            //     _id: "",
-            //     user: {
-            //       name: "",
-            //       imageUrl: "",
-            //       _id: ""
-            //     },
-            //     timestamp: 25215215,
-            //     comment: ""
-            //   }
-            // ]
-            // 
-            // input: "input"
-          },
-          {
-            _id: 1,
-            title: "Task Title",
-            category: "testing"
-          },
-          {
-            _id: 2,
-            title: "Task Title",
-            category: "code"
-          }
-        ],
-        assigned: [
-          {
-            title: "Task Title",
-            category: "code"
-          },
-          {
-            title: "Task Title",
-            category: "code"
-          },
-          {
-            title: "Task Title",
-            category: "testing"
-          },
-        ],
-        inprogress: [
-          {
-            title: "Task Title",
-            category: "code"
-          },
-          {
-            title: "Task Title",
-            category: "resources"
-          },
-          {
-            title: "Task Title",
-            category: "testing"
-          },
-        ],
-        complete: [
-          {
-            title: "Task Title",
-            category: "resources"
-          },
-          {
-            title: "Hello There",
-            category: "research"
-          },
-          {
-            title: "Task Title",
-            category: "design"
-          },
-        ]
+      isFetching: true,
+      dashboard: {
+        backlog: {
+          tasks: [
+            {
+              _id: 1,
+              title: "Task Title",
+              category: "code"
+            },
+            {
+              _id: 2,
+              title: "Task Title",
+              category: "testing"
+            },
+            {
+              _id: 3,
+              title: "Task Title",
+              category: "code"
+            }
+          ]
+        },
+        assigned: {
+          tasks: [
+            {
+              title: "Task Title",
+              category: "code"
+            },
+            {
+              title: "Task Title",
+              category: "code"
+            },
+            {
+              title: "Task Title",
+              category: "testing"
+            }
+          ]
+        },
+        inProgress: {
+          tasks: [
+            {
+              title: "Task Title",
+              category: "code"
+            },
+            {
+              title: "Task Title",
+              category: "resources"
+            },
+            {
+              title: "Task Title",
+              category: "testing"
+            }
+          ]
+        },
+        complete: {
+          tasks: [
+            {
+              title: "Task Title",
+              category: "resources"
+            },
+            {
+              title: "Hello There",
+              category: "research"
+            },
+            {
+              title: "Task Title",
+              category: "design"
+            }
+          ]
+        }
       }
     }
   }
+  componentDidMount() {
+    getDashboard().then((dashboard)=> {
+      console.log("App: " + dashboard);
+      this.setState({dashboard: dashboard, isFetching: false});
+    })
+  }
+  logout = ()=>{
+    logoutUser(this.props.history);
+  };
   render() {
     return (
       <div>
@@ -125,10 +127,10 @@ export default class App extends Component {
             <h3 className="stack_title">Completed</h3>
           </div>
           <div className="stacks">
-            <Stack tasks={this.state.stacks.backlog} />
-            <Stack tasks={this.state.stacks.assigned} />
-            <Stack tasks={this.state.stacks.inprogress} />
-            <Stack tasks={this.state.stacks.complete} />
+            <Stack tasks={this.state.dashboard.backlog.tasks} />
+            <Stack tasks={this.state.dashboard.assigned.tasks} />
+            <Stack tasks={this.state.dashboard.inProgress.tasks} />
+            <Stack tasks={this.state.dashboard.complete.tasks} />
           </div>
         </div>
         <ModalRoute
@@ -139,4 +141,5 @@ export default class App extends Component {
       </div>
     )
   }
-}                                                  
+}
+export default withRouter(App);

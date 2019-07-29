@@ -3,16 +3,18 @@ import './../sass/App.scss';
 import React from 'react'
 import batonlogo from '../assets/batonlogo.svg'
 import { Link } from 'react-router-dom'
+import {login} from '../api/user'
+import {withRouter} from 'react-router-dom'
+import classnames from 'classnames'
 
-// export default function Signin() {
-//     return (
-export default class Signin extends React.Component {
+class Signin extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             email: "",
             password: "",
+            errors: {}
         };
     }
 
@@ -27,38 +29,70 @@ export default class Signin extends React.Component {
     }
 
     handleSubmit = event => {
-        event.preventDefault();
+      event.preventDefault();
+      var userData = {
+        email: this.state.email,
+        password: this.state.password
+      };
+
+      login(userData, this.props.history).then((err)=>{
+        console.log(err);
+        if (err) {
+          this.setState({errors: err});
+        }
+      });
     }
 
     render() {
         return (
             <div className="SigninContainer">
                 <img src={batonlogo} alt="Logo" />
+                <form className="SignIn__form" onSubmit={this.handleSubmit}>
                 <div className="SignIn">
-                    <form className="SignIn__form" onSubmit={this.handleSubmit}>
+                    <div className="SignIn__form">
                         <label className="SignIn__label">
                             Email Address
                             </label>
-                        <input className="SignIn__input" type="text" value={this.state.value}
-                            onChange={this.handleChange} />
+                      <input
+                        type="text"
+                        id="email"
+                        value={this.state.email}
+                        error={this.state.errors.email}
+                        className={classnames("SignIn__input", {
+                          invalid: this.state.errors.email
+                        })}
+                        onChange={this.handleChange}/>
+                      <span className="red-text">{this.state.errors.email}</span>
 
-                        <label className="SignIn__label">
+
+                      <label className="SignIn__label">
                             Password
                             </label>
-                        <input className="SignIn__input" type="text" value={this.state.value}
-                            onChange={this.handleChange} />
-                    </form>
+                      <input
+                        type="text"
+                        id="password"
+                        value={this.state.password}
+                        error={this.state.errors.password}
+                        className={classnames("SignIn__input", {
+                          invalid: this.state.errors.password
+                        })}
+                        onChange={this.handleChange}/>
+                      <span className="red-text">{this.state.errors.password}</span>
+                    </div>
                 </div>
 
                 <div className="buttons">
-                    <button id="signupbtn2">
-                        <Link to="/signup" style={{ textDecoration: 'none', color: 'white' }}>Sign Up</Link>
+                    <button id="signupbtn2" style={{ textDecoration: 'none', color: 'white' }}>
+                        Sign Up
                     </button>
-                    <button id="signinbtn2">
-                        <Link to="/dashboard" style={{ textDecoration: 'none', color: 'black' }}>Sign In</Link>
+                    <button type="submit" id="signinbtn2" style={{ textDecoration: 'none', color: 'black' }}>
+                        Sign In
                     </button>
                 </div>
+              </form>
             </div >
         );
     }
 }
+
+export default withRouter(Signin);
