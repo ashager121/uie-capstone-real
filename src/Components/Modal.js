@@ -20,7 +20,8 @@ export default class Modal extends Component {
                     users: {
                         name: "George",
                         imageUrl: "",
-                        _id: "0"
+                        _id: "0",
+                        timestamp: "Due: 01/01/01"
                     },
                     comments: [
                         {
@@ -55,7 +56,7 @@ export default class Modal extends Component {
                     <button>Category</button>
                     <button><img src='#' alt='priority'></img></button>
                     <h2>{this.state.task.title}</h2>
-                    {/* <h4>{this.state.task.comments.timestamp}</h4> */}
+                    <h4>{this.state.task.users.timestamp}</h4>
                     <p></p>
                     <div className="profilePhotos">
                         {/* <img src={Photo} alt="user" />
