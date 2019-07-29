@@ -1,15 +1,8 @@
 import React from "react";
-// import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-// import './node_modules/react-router-modal/css/react-router-modal.css';
 import { Link } from 'react-router-dom'
 import './../sass/App.scss';
-// import './../sass/_signup.scss';
 import batonlogo from '../assets/batonlogo.svg';
 import useravatar from './../assets/user.svg';
-// import Default1 from './assetts/default1.png';
-// import Default2 from './assetts/default2.png';
-// import Default3 from './assetts/default3.png';
-// import Default4 from './assetts/default4.png';
 
 
 export default class Signup extends React.Component {
