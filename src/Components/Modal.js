@@ -53,7 +53,16 @@ export default class Modal extends Component {
         return (
             <section className="modal__wrapper" >
                 <div className="modal__body">
-                    <button>Category</button>
+                <div class="dropdown">
+                <button class="dropbtn">Category</button>
+                <div class="dropdown-content">
+                    <a>Code</a>
+                    <a>Research</a>
+                    <a>Design</a>
+                    <a>Resources</a>
+                    <a>Testing</a>
+                </div>
+                </div>
                     <button><img src='#' alt='priority'></img></button>
                     <h2>{this.state.task.title}</h2>
                     <h4>{this.state.task.users.timestamp}</h4>
