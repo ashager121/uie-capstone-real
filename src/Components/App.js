@@ -7,7 +7,7 @@ import Modal from './Modal';
 import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
 import useravatar from "./../assets/user.svg";
-
+import { DragDropContext } from 'react-beautiful-dnd';
 
 
 export default class App extends Component {
