@@ -5,6 +5,7 @@ import batonlogo from '../assets/batonlogo.svg';
 import Avatar from './Avatar';
 import cobra from '../assets/avatars/cobra.svg';
 import crab from '../assets/avatars/crab.svg';
+import mouse from '../assets/avatars/mouse.svg'
 
 export default class Signup extends React.Component {
     constructor(props) {
@@ -20,6 +21,9 @@ export default class Signup extends React.Component {
                 },
                 {
                     img_url: crab
+                },
+                {
+                    img_url: mouse
                 }
 
             ]
