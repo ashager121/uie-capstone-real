@@ -10,20 +10,22 @@ import Photo from '../assets/user.png';
 export default class Modal extends Component {
     constructor() {
         super()
-        this.state = //mockdata
-            {
-                task: {
-                    _id: 0,
-                    title: "Task Title",
-                    category: "code",
-                    state: 'Backlog',
-                    users: [{
-                        name: "George",
-                        imageUrl: "",
-                        _id: "0"
-                    }],
-                    comments: [
-                        {
+            this.state = //mockdata
+                {
+                    task: {
+                        _id: 0,
+                        title: "Task Title",
+                        category: "code",
+                        state: 'Backlog',
+                        users: [
+                            {
+                            name: "George",
+                            imageUrl: "",
+                            _id: "0"
+                            }
+                        ],
+                        comments: [
+                            {
                             _id: "0",
                             user: {
                                 name: "Nigel",
@@ -32,11 +34,11 @@ export default class Modal extends Component {
                             },
                             timestamp: "Due: 01/01/01",
                             comment: "Thank you for posting this task, we will get right on it."
-                        }
-                    ],
-                    input: "input"
+                            }
+                        ],
+                        input: "input"
+                    }
                 }
-            }
     }
     render() {
         return (
@@ -44,7 +46,7 @@ export default class Modal extends Component {
                 <div className="modal__body">
                     <button>Category</button>
                     <button><img src='#' alt='priority'></img></button>
-                    <h3>{this.state.task.title}</h3>
+                    <h2>{this.state.task.title}</h2>
                     {/* <h4>{this.state.comments.timestamp}</h4> */}
                     <p></p>
                     <div className="profilePhotos">
