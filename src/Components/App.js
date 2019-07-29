@@ -115,10 +115,11 @@ export default class App extends Component {
             </div>
           </div>
           <div className="stack_wrapper">
-            <h3 className="stack_title">Backlog</h3>
-            <button id="addcard">
+            <h3 className="stack_title">Backlog
+              <button id="addcard">
               <img id="addcardbtn" src={addbtn} alt="add new card"></img>
             </button>
+            </h3>
             <h3 className="stack_title">Assigned</h3>
             <h3 className="stack_title">In-Progress</h3>
             <h3 className="stack_title">Completed</h3>
