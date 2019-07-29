@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import './../sass/App.scss';
 import batonlogo from '../assets/batonlogo.svg';
 import Avatar from './Avatar';
+import cobra from '../assets/avatars/cobra.svg';
+import crab from '../assets/avatars/crab.svg';
 
 export default class Signup extends React.Component {
     constructor(props) {
@@ -11,7 +13,16 @@ export default class Signup extends React.Component {
         this.state = {
             email: "",
             password: "",
-            confirm: ""
+            confirm: "",
+            avatars: [
+                {
+                    img_url: cobra
+                },
+                {
+                    img_url: crab
+                }
+
+            ]
         };
     }
 
@@ -27,6 +38,9 @@ export default class Signup extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
+    }
+    setAvatar = e => {
+        console.log('clicked')
     }
 
     render() {
@@ -60,33 +74,15 @@ export default class Signup extends React.Component {
                     </form>
                 </div>
                 <div className="avatars">
-                    <div className="col">
-                        <Avatar />
-                    </div>
-                    <div className="col">
-                        <Avatar />
-                    </div>
-                    <div className="col">
-                        <Avatar />
-                    </div>
-                    <div className="col">
-                        <Avatar />
-                    </div>
-                    <div className="col">
-                        <Avatar />
-                    </div>
-                    <div className="col">
-                        <Avatar />
-                    </div>
-                    <div className="col">
-                        <Avatar />
-                    </div>
-                    <div className="col">
-                        <Avatar />
-                    </div>
-                    <div className="col">
-                        <Avatar />
-                    </div>
+                    {this.state.avatars.map((avatar) => {
+                        return <div className="col">
+                            <Avatar
+                                image={avatar.img_url}
+                                setAvatar={this.setAvatar}
+                            />
+                        </div>
+                    })}
+
                 </div>
 
                 <div className="buttons">

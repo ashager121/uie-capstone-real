@@ -6,7 +6,7 @@ import './../sass/App.scss';
 // import Photo from '../assets/user.png';
 // import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { DragDropContext } from 'react-beautiful-dnd';
+// import { DragDropContext } from 'react-beautiful-dnd';
 
 class Card extends Component {
 

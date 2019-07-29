@@ -7,7 +7,7 @@ import Modal from './Modal';
 import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
 import useravatar from "./../assets/user.svg";
-import { DragDropContext } from 'react-beautiful-dnd';
+// import { DragDropContext } from 'react-beautiful-dnd';
 
 
 export default class App extends Component {
@@ -117,8 +117,8 @@ export default class App extends Component {
           <div className="stack_wrapper">
             <h3 className="stack_title">Backlog
               <button id="addcard">
-              <img id="addcardbtn" src={addbtn} alt="add new card"></img>
-            </button>
+                <img id="addcardbtn" src={addbtn} alt="add new card"></img>
+              </button>
             </h3>
             <h3 className="stack_title">Assigned</h3>
             <h3 className="stack_title">In-Progress</h3>
