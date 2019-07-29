@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import './../sass/App.scss';
 import batonlogo from '../assets/batonlogo.svg';
-import useravatar from './../assets/user.svg';
-
+// import useravatar from './../assets/user.svg';
+import Avatar from './Avatar';
 
 export default class Signup extends React.Component {
     constructor(props) {
@@ -60,10 +60,39 @@ export default class Signup extends React.Component {
                             </label>
                     </form>
                 </div>
-
-                <div className="SignUp__avatar">
-                    <img src={useravatar} alt="Avatar" />
+                <div className="avatars">
+                    <div className="col">
+                        <Avatar />
+                    </div>
+                    <div className="col">
+                        <Avatar />
+                    </div>
+                    <div className="col">
+                        <Avatar />
+                    </div>
+                    <div className="col">
+                        <Avatar />
+                    </div>
+                    <div className="col">
+                        <Avatar />
+                    </div>
+                    <div className="col">
+                        <Avatar />
+                    </div>
+                    <div className="col">
+                        <Avatar />
+                    </div>
+                    <div className="col">
+                        <Avatar />
+                    </div>
                 </div>
+
+
+
+                {/* import avatars here */}
+                {/* <div className="SignUp__avatar">
+                    <img src={useravatar} alt="Avatar" />
+                </div> */}
 
                 <div className="buttons">
                     <button id="signinbtn1">
@@ -77,3 +106,13 @@ export default class Signup extends React.Component {
         );
     }
 }
+
+
+
+// let urls = [
+//     "../assets/avatar/cobra.svg",
+//     "../assets/avatar/crab.svg",
+//     "../assets/avatar/frog.svg"
+// ];
+
+// ReactDOM.render(<Avatar imageUrls={urls} />, document.getElementById("mount"));
