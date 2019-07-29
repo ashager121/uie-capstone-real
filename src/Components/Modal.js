@@ -4,6 +4,10 @@ import './../sass/App.scss';
 // import { ModalRoute } from 'react-router-modal';
 import Photo from '../assets/user.png';
 // import PropTypes from 'prop-types';
+import Low from '../assets/lowp.svg';
+import Med from '../assets/medp.svg';
+import High from '../assets/highp.svg';
+import Block from '../assets/blockp.svg';
 
 
 
@@ -53,17 +57,27 @@ export default class Modal extends Component {
         return (
             <section className="modal__wrapper" >
                 <div className="modal__body">
-                <div class="dropdown">
-                <button class="dropbtn">Category</button>
-                <div class="dropdown-content">
-                    <a>Code</a>
-                    <a>Research</a>
-                    <a>Design</a>
-                    <a>Resources</a>
-                    <a>Testing</a>
+                    <div class="category-wrapper">
+                        <div class="dropdown">
+                        <button class="dropbtn">Category</button>
+                            <div class="dropdown-content">
+                                <a id='codecategory'>Code</a>
+                                <a id='researchcategory'>Research</a>
+                                <a id='designcategory'>Design</a>
+                                <a id='resourcescategory'>Resources</a>
+                                <a id='testingcategory'>Testing</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                        <button class="dropbtn">Priority</button>
+                            <div class="dropdown-content">
+                                <a><img id='lowp' src={Low}></img></a>
+                                <a><img id='medp' src={Med}></img></a>                
+                                <a><img id='medp' src={High}></img></a>
+                                <a><img id='medp' src={Block}></img></a>      
+                            </div>
+                        </div>
                 </div>
-                </div>
-                    <button><img src='#' alt='priority'></img></button>
                     <h2>{this.state.task.title}</h2>
                     <h4>{this.state.task.users.timestamp}</h4>
                     <p></p>
