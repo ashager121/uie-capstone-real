@@ -8,15 +8,15 @@ export default class Stack extends Component {
     // pass stacks as a prop
     render() {
         var tasksList = this.props.tasks.map((task, index) => {
-            return <Card task={task} key={index} />
+            return <Card task={task} index={index} />
         })
         return (
             <section className="board" >
                 <div className="board__wrap">
-                    <Droppable droppableId={this.props.tasks.id}>
+                    <Droppable droppableId={this.props.id}>
                     {(provided) =>(
                         <div className="board__section"
-                        Innerref={provided.innerRef}
+                        ref={provided.innerRef}
                         {...provided.droppableProps}
                         >
                             {tasksList}

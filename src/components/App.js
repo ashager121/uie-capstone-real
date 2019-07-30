@@ -92,7 +92,7 @@ class App extends Component {
   componentDidMount() {
     getDashboard().then((dashboard)=> {
       console.log("App: " + dashboard);
-      this.setState({dashboard: dashboard, isFetching: false});
+      //this.setState({dashboard: dashboard, isFetching: false});
     })
   }
   logout = ()=>{
@@ -100,7 +100,7 @@ class App extends Component {
   };
   onDragEnd = result =>{
     // Reorder the column
-  }
+  };
   render() {
     return (
       <div>
@@ -131,10 +131,10 @@ class App extends Component {
           </div>
           <DragDropContext onDragEnd={this.onDragEnd}>
             <div className="stacks">
-              <Stack tasks={this.state.dashboard.backlog.tasks} />
-              <Stack tasks={this.state.dashboard.assigned.tasks} />
-              <Stack tasks={this.state.dashboard.inProgress.tasks} />
-              <Stack tasks={this.state.dashboard.complete.tasks} />
+              <Stack tasks={this.state.dashboard.backlog.tasks} id="backlog-stack"/>
+              <Stack tasks={this.state.dashboard.assigned.tasks} id="assigned-stack"/>
+              <Stack tasks={this.state.dashboard.inProgress.tasks} id="inProgress-stack"/>
+              <Stack tasks={this.state.dashboard.complete.tasks} id="complete-stack"/>
             </div>
           </DragDropContext>
         </div>

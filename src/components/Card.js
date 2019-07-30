@@ -25,16 +25,16 @@ class Card extends Component {
     }
     opencard = () => {
         this.props.history.push('/dashboard/details/' + this.props.task._id)
-    }
+    };
     render() {
         const task = this.props.task;
         return (
-            <Draggable draggableId={this.props.task.id} index={this.props.index}>
+            <Draggable draggableId={this.props.task._id + '-drag'} index={this.props.index}>
                 {(provided) =>(
                     <div onClick={this.opencard} className={"board__card " + this.getCardColor()}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                        innerRef={provided.innerRef}ç
+                        ref={provided.innerRef}
                     >
                     <h3>{task.title}</h3>
                     <h6>{task.duedate}</h6>
