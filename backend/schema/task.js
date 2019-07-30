@@ -12,7 +12,6 @@ const TaskSchema = new Schema(
       default: shortid.generate
     },
     title: String,
-    state: String,
     dueDate: Date,
     priority: String,
     category: String,

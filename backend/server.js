@@ -134,10 +134,6 @@ function initData() {
     }
     var dataFromFile=JSON.parse(data);
 
-    for (var user of dataFromFile.users) {
-      User.create(user, ()=>{});
-    }
-
     dataFromFile.dashboard.backlog = await parseStack(dataFromFile.dashboard.backlog);
     dataFromFile.dashboard.assigned = await parseStack(dataFromFile.dashboard.assigned);
 
