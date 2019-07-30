@@ -3,12 +3,16 @@ import './../sass/App.scss';
 
 const Avatar = (props) => {
     return (
+
         <div
             className="UserAvatars"
             onClick={props.setAvatar}
         >
-            <img src={props.image} alt="useravatar" />
+            <a className="imageAnchor" href="#">
+                <img src={props.image} alt="useravatar" />
+            </a>
         </div>
+
     )
 }
 
