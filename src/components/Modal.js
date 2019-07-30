@@ -8,7 +8,7 @@ import Low from '../assets/lowp.svg';
 import Med from '../assets/medp.svg';
 import High from '../assets/highp.svg';
 import Block from '../assets/blockp.svg';
-import Avatar from'./Avatar';
+// import Avatar from'./Avatar';
 
 export default class Modal extends Component {
     constructor() {

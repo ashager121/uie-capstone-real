@@ -6,7 +6,7 @@ import './../sass/App.scss';
 // import Photo from '../assets/user.png';
 // import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-// import { DragDropContext } from 'react-beautiful-dnd';
+import { Draggable } from 'react-beautiful-dnd';
 
 class Card extends Component {
 
@@ -29,13 +29,18 @@ class Card extends Component {
     render() {
         const task = this.props.task;
         return (
-            <div onClick={this.opencard} className={"board__card " + this.getCardColor()}>
-                <h3>{task.title}</h3>
-                <h6>{task.duedate}</h6>
-                {/* <img src={Comment} alt="Comment" /> */}
-                {/* <img src={Priority} alt="Priority" /> */}
-                {/*  */}
-            </div>
+            <Draggable draggableId={this.props.task.id} index={this.props.index}>
+                {(provided) =>(
+                    <div onClick={this.opencard} className={"board__card " + this.getCardColor()}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        innerRef={provided.innerRef}ç
+                    >
+                    <h3>{task.title}</h3>
+                    <h6>{task.duedate}</h6>
+                    </div>
+                )}
+            </Draggable>
         )
     }
 }

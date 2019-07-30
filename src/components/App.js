@@ -7,7 +7,7 @@ import Modal from './Modal';
 import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
 import useravatar from "./../assets/user.svg";
-// import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 import {logoutUser} from '../api/user.js'
 import {withRouter} from 'react-router-dom'
@@ -98,6 +98,9 @@ class App extends Component {
   logout = ()=>{
     logoutUser(this.props.history);
   };
+  onDragEnd = result =>{
+    // Reorder the column
+  }
   render() {
     return (
       <div>
@@ -126,12 +129,14 @@ class App extends Component {
             <h3 className="stack_title">In-Progress</h3>
             <h3 className="stack_title">Completed</h3>
           </div>
-          <div className="stacks">
-            <Stack tasks={this.state.dashboard.backlog.tasks} />
-            <Stack tasks={this.state.dashboard.assigned.tasks} />
-            <Stack tasks={this.state.dashboard.inProgress.tasks} />
-            <Stack tasks={this.state.dashboard.complete.tasks} />
-          </div>
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            <div className="stacks">
+              <Stack tasks={this.state.dashboard.backlog.tasks} />
+              <Stack tasks={this.state.dashboard.assigned.tasks} />
+              <Stack tasks={this.state.dashboard.inProgress.tasks} />
+              <Stack tasks={this.state.dashboard.complete.tasks} />
+            </div>
+          </DragDropContext>
         </div>
         <ModalRoute
           component={Modal}
