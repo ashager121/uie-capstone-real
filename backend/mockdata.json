@@ -7,7 +7,30 @@
       "name": "Backlog",
       "tasks": [
         {
-          "title": "Task Name 1"
+          "title": "Task Name 1",
+          "dueDate": 1563926318902,
+          "priority": "high",
+          "category": "code",
+          "description": "This is a task description.",
+          "assignees": [
+            {
+              "name": "Bob Ross",
+              "email": "bob@gmail.com",
+              "password": "bob",
+              "imageUrl": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzOTU5NTgxMTk2/bob-ross-9464216-1-402.jpg"
+            }
+          ],
+          "comments": [
+            {
+              "text": "Hello!",
+              "postedBy": {
+                "name": "Bob Ross",
+                "email": "bob@gmail.com",
+                "password": "bob",
+                "imageUrl": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzOTU5NTgxMTk2/bob-ross-9464216-1-402.jpg"
+              }
+            }
+          ]
         }
       ]
     },
@@ -15,7 +38,30 @@
       "name": "Assigned",
       "tasks": [
         {
-          "title": "Task Name 2"
+          "title": "Task Name 1",
+          "dueDate": 1563926318902,
+          "priority": "high",
+          "category": "code",
+          "description": "This is a task description.",
+          "assignees": [
+            {
+              "name": "Bob Ross",
+              "email": "bob@gmail.com",
+              "password": "bob",
+              "imageUrl": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzOTU5NTgxMTk2/bob-ross-9464216-1-402.jpg"
+            }
+          ],
+          "comments": [
+            {
+              "text": "Hello!",
+              "postedBy": {
+                "name": "Bob Ross",
+                "email": "bob@gmail.com",
+                "password": "bob",
+                "imageUrl": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzOTU5NTgxMTk2/bob-ross-9464216-1-402.jpg"
+              }
+            }
+          ]
         }
       ]
     },
@@ -23,7 +69,30 @@
       "name": "In Progress",
       "tasks": [
         {
-          "title": "Task Name 3"
+          "title": "Task Name 1",
+          "dueDate": 1563926318902,
+          "priority": "high",
+          "category": "code",
+          "description": "This is a task description.",
+          "assignees": [
+            {
+              "name": "Bob Ross",
+              "email": "bob@gmail.com",
+              "password": "bob",
+              "imageUrl": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzOTU5NTgxMTk2/bob-ross-9464216-1-402.jpg"
+            }
+          ],
+          "comments": [
+            {
+              "text": "Hello!",
+              "postedBy": {
+                "name": "Bob Ross",
+                "email": "bob@gmail.com",
+                "password": "bob",
+                "imageUrl": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzOTU5NTgxMTk2/bob-ross-9464216-1-402.jpg"
+              }
+            }
+          ]
         }
       ]
     },
@@ -31,17 +100,32 @@
       "name": "Completed",
       "tasks": [
         {
-          "title": "Task Name 4"
+          "title": "Task Name 1",
+          "dueDate": 1563926318902,
+          "priority": "high",
+          "category": "code",
+          "description": "This is a task description.",
+          "assignees": [
+            {
+              "name": "Bob Ross",
+              "email": "bob@gmail.com",
+              "password": "bob",
+              "imageUrl": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzOTU5NTgxMTk2/bob-ross-9464216-1-402.jpg"
+            }
+          ],
+          "comments": [
+            {
+              "text": "Hello!",
+              "postedBy": {
+                "name": "Bob Ross",
+                "email": "bob@gmail.com",
+                "password": "bob",
+                "imageUrl": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzOTU5NTgxMTk2/bob-ross-9464216-1-402.jpg"
+              }
+            }
+          ]
         }
       ]
     }
-  },
-  "users": [
-    {
-      "id": 1,
-      "name": "Bob Ross",
-      "email": "bob@gmail.com",
-      "imageUrl": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzOTU5NTgxMTk2/bob-ross-9464216-1-402.jpg"
-    }
-  ]
+  }
 }

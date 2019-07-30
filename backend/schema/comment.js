@@ -5,31 +5,20 @@ const shortid = require('shortid');
 const Schema = mongoose.Schema;
 
 // this will be our data base's data structure
-const TaskSchema = new Schema(
+const CommentSchema = new Schema(
   {
     _id: {
       type: String,
       default: shortid.generate
     },
-    title: String,
-    state: String,
-    dueDate: Date,
-    priority: String,
-    category: String,
-    description: String,
-    assignees: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    ],
-    comments: [{
+    comment: String,
+    postedBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Comment'
-    }]
+      ref: 'User'
+    }
   },
   { timestamps: true }
 );
 
 // export the new Schema so we could modify it using Node.js
-module.exports = mongoose.model("Task", TaskSchema);
+module.exports = mongoose.model("Comment", CommentSchema);

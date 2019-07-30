@@ -20,88 +20,34 @@ class App extends Component {
       isFetching: true,
       dashboard: {
         backlog: {
-          tasks: [
-            {
-              _id: 1,
-              title: "Task Title",
-              category: "code"
-            },
-            {
-              _id: 2,
-              title: "Task Title",
-              category: "testing"
-            },
-            {
-              _id: 3,
-              title: "Task Title",
-              category: "code"
-            }
-          ]
+          tasks: []
         },
         assigned: {
-          tasks: [
-            {
-              title: "Task Title",
-              category: "code"
-            },
-            {
-              title: "Task Title",
-              category: "code"
-            },
-            {
-              title: "Task Title",
-              category: "testing"
-            }
-          ]
+          tasks: []
         },
         inProgress: {
-          tasks: [
-            {
-              title: "Task Title",
-              category: "code"
-            },
-            {
-              title: "Task Title",
-              category: "resources"
-            },
-            {
-              title: "Task Title",
-              category: "testing"
-            }
-          ]
+          tasks: []
         },
         complete: {
-          tasks: [
-            {
-              title: "Task Title",
-              category: "resources"
-            },
-            {
-              title: "Hello There",
-              category: "research"
-            },
-            {
-              title: "Task Title",
-              category: "design"
-            }
-          ]
+          tasks: []
         }
       }
     }
   }
-  componentDidMount() {
-    getDashboard().then((dashboard)=> {
+  componentDidMount = () => {
+    getDashboard(this.props.history).then((dashboard)=> {
       console.log("App: " + dashboard);
       this.setState({dashboard: dashboard, isFetching: false});
     })
   }
-  logout = ()=>{
+  logout = () => {
     logoutUser(this.props.history);
   };
   render() {
     return (
       <div>
         <div className="App" >
+          <button onClick={this.logout}>Logout</button>
           <header className="boardHeader">
             <h1 className="boardHeader_title">Sprint Title</h1>
             <h3>Date Range</h3>

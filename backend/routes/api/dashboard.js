@@ -8,13 +8,21 @@ const router = express.Router();
 // @desc Gets main dashboard
 // @access Private
 router.get('/', (req, res) => {
+  if (!req.isAuthenticated()) {
+    console.log("Not authenticated, redirecting...");
+    return res.json({ success: false, redirect: true});
+  }
 
   var populateQuery = [];
   var taskSelector = {
     select: ['name'],
     populate: {
       path: 'tasks',
-      select: ['title']
+      select: ['title', 'dueDate', 'priority', 'category'],
+      populate: {
+        path: 'assignees',
+        select: ['name', 'imageUrl', 'email']
+      }
     }
   };
   populateQuery.push({ path: 'backlog', ...taskSelector});
@@ -30,7 +38,5 @@ router.get('/', (req, res) => {
       return res.json({ success: true, data: data });
     });
 });
-
-
 
 module.exports = router;

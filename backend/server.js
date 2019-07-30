@@ -7,12 +7,21 @@ const Dashboard = require('./schema/dashboard');
 const Stack = require('./schema/stack');
 const User = require('./schema/user');
 const Task = require('./schema/task');
+const Comment = require('./schema/comment');
 const shortid = require('shortid');
 const passport = require('passport');
+const bcrypt = require("bcryptjs");
 
 const users = require('./routes/api/users');
 const dashboard = require('./routes/api/dashboard');
 const task = require('./routes/api/task');
+const authmiddleware = require('./authmiddleware');
+const session = require('express-session');
+const keys = require("./config/keys");
+const uuid = require("uuid/v4");
+const FileStore = require('session-file-store')(session);
+const LocalStrategy = require('passport-local').Strategy;
+
 
 const API_PORT = 3001;
 
@@ -42,16 +51,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
+app.use(session({
+  genid: (req) => {
+    return uuid();
+  },
+  store: new FileStore(),
+  secret: keys.secretOrKey,
+  resave: false,
+  saveUninitialized: true
+}));
+require("./config/passport")(passport);
 // Passport middleware
 app.use(passport.initialize());
+app.use(passport.session());
 // Passport config
-require("./config/passport")(passport);
-
 
 // Add in all of our other Routes
 app.use("/api/users", users);
 app.use('/api/dashboard', dashboard);
 app.use('/api/task', task);
+
+// append /api for our http requests
+app.use('/', router);
+
+router.get('/', ()=> {
+
+});
 
 // -------------- Initialize When Empty -------------------------------------------------------------------------
 
@@ -60,7 +85,21 @@ function initData() {
 
   const fs = require('fs');
 
+  async function parseComment(comment) {
+    comment.postedBy = await parseUser(comment.postedBy);
+    return await new Comment(comment).save();
+  }
+
   async function parseTask(task) {
+    for(var i = 0; i < task.assignees.length; i++) {
+      var user = task.assignees[i];
+      task.assignees[i] = await parseUser(user);
+    }
+    for(var j = 0; j < task.comments.length; j++) {
+      var comment = task.comments[j];
+      task.comments[j] = await parseComment(comment);
+    }
+
     return await new Task(task).save();
   }
   async function parseStack(stack) {
@@ -69,6 +108,24 @@ function initData() {
       stack.tasks[i] = await parseTask(task);
     }
     return await new Stack(stack).save();
+  }
+
+  async function parseUser(user) {
+    return await User.findOne({ email: user.email }).then(async (dbuser) => {
+      if (dbuser) {
+        return dbuser;
+      } else {
+        const newUser = new User(user);
+        return await bcrypt.genSalt(10, async (err, salt) => {
+          return await bcrypt.hash(newUser.password, salt, async (err, hash) => {
+            if (err) throw err;
+            newUser.password = hash;
+            return await newUser
+              .save()
+          });
+        });
+      }
+    });
   }
   
   fs.readFile('./mockData.json', 'utf8', async function(err,data) {
@@ -89,7 +146,7 @@ function initData() {
 
     var dash = await new Dashboard(dataFromFile.dashboard).save();
 
-    console.log("Initialized with Mock Data.")
+    console.log("Initialized with Mock Data.");
   });
 }
 
@@ -112,8 +169,6 @@ Dashboard.find((err, data) => {
 
 // -------------- Finishing Setup--------------------------------------------------------------------
 
-// append /api for our http requests
-app.use('/api', router);
 
 // launch our backend into a port
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
