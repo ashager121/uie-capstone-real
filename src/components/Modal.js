@@ -8,9 +8,24 @@ import Low from '../assets/lowp.svg';
 import Med from '../assets/medp.svg';
 import High from '../assets/highp.svg';
 import Block from '../assets/blockp.svg';
-import Avatar from'./Avatar';
+// import Avatar from'./Avatar';
 
 export default class Modal extends Component {
+
+    getCardColor() {
+        if (this.props.task.category === 'code') {
+            return 'board__card--code'
+        } else if (this.props.task.category === 'research') {
+            return 'board__card--research'
+        } else if (this.props.task.category === 'design') {
+            return 'board__card--design'
+        } else if (this.props.task.category === 'testing') {
+            return 'board__card--testing'
+        } else if (this.props.task.category === 'resources') {
+            return 'board__card--resources'
+        }
+    }
+    
     constructor() {
         super()
         this.state = //mockdata

@@ -35,6 +35,9 @@ class Card extends Component {
                 {/* <img src={Comment} alt="Comment" /> */}
                 {/* <img src={Priority} alt="Priority" /> */}
                 {/*  */}
+                <div class="categorywrapper">
+                    <h4>{task.category}</h4>
+                </div>
             </div>
         )
     }

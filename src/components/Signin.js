@@ -2,7 +2,7 @@
 import './../sass/App.scss';
 import React from 'react'
 import batonlogo from '../assets/batonlogo.svg'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import {login} from '../api/user'
 import {withRouter} from 'react-router-dom'
 import classnames from 'classnames'
