@@ -99,7 +99,65 @@ class App extends Component {
     logoutUser(this.props.history);
   };
   onDragEnd = result =>{
-    // Reorder the column
+    const {destination, source, draggableId} = result;
+
+    if (!destination) {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    const start = this.state.stack[source.droppableId];
+    const finish = Array.from(destination.taskIds);
+
+    if (start === finish) {
+      const newTaskIds = Array.from(start.taskIds);
+      newTaskIds.splice(source.index, 1);
+    newTaskIds.splice (destination.index, 0, draggableId);
+
+    const newStack = {
+      ...newStack,
+      task: newTaskIds,
+    };
+
+    const newState = {
+      ...this.state,
+      stacks: {
+        ...this.state.stacks,
+        [newStack.id]: newStack,
+      },
+    };
+
+    this.setState(newState);
+    return;
+    }
+    const startTaskIds = Array.from(start.taskIds);
+    startTaskIds.splice(source.index, 1);
+    const newStart = {
+      ...start,
+      taskIds: startTaskIds,
+    };
+    const finishedTaskIds = Array.from(finish.taskIds);
+    finishedTaskIds.splice(destination.index, 0, draggableId);
+    const newFinish = {
+      ...finish,
+      taskIds: finishedTaskIds,
+    };
+
+    const newState = {
+      ...this.state,
+      columns: {
+        ...this.state.stacks,
+        [newStart.id]: newStart,
+        [newFinish.id]: newFinish,
+      },
+    };
+    this.setState(newState);
   };
   render() {
     return (
