@@ -7,15 +7,16 @@ import Modal from './Modal';
 import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
 import useravatar from "./../assets/user.svg";
-// import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext } from 'react-beautiful-dnd';
+
 import {logoutUser} from '../api/user.js'
 import {withRouter} from 'react-router-dom'
 import {getDashboard} from '../api/dashboard';
-import Axios from 'axios';
+import { throttle } from "throttle-debounce";
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = /*mockdata*/ {
       isFetching: true,
       dashboard: {
@@ -23,13 +24,62 @@ class App extends Component {
           tasks: []
         },
         assigned: {
-          tasks: []
+          tasks: [
+            {
+              _id: 4,
+              title: "Task Title",
+              category: "code"
+
+            },
+            {
+              _id: 5,
+              title: "Task Title",
+              category: "code"
+            },
+            {
+              _id: 6,
+              title: "Task Title",
+              category: "testing"
+            }
+          ]
         },
         inProgress: {
-          tasks: []
+          tasks: [
+            {
+              _id: 7,
+              title: "Task Title",
+              category: "code"
+            },
+            {
+              _id: 8,
+              title: "Task Title",
+              category: "resources"
+            },
+            {
+              _id: 9,
+              title: "Task Title",
+              category: "testing"
+            }
+          ]
         },
         complete: {
-          tasks: []
+          tasks: [
+            {
+              _id: 10,
+              title: "Task Title",
+              category: "resources"
+            },
+            {
+              _id: 11,
+              title: "Hello There",
+              category: "research"
+            },
+            {
+              _id: 12,
+              title: "Task Title",
+              category: "design"
+            }
+          ]
         }
       }
     }
@@ -44,9 +94,45 @@ class App extends Component {
   logout = () => {
     logoutUser(this.props.history);
   };
-  createItem=() => {
-    this.props.history.push('/dashboard/details/new')
-  }
+  saveDashboard = throttle(5000, () => {
+    console.log("Saving Dashboard");
+    // Call the backend, pass it the current this.state.dashboard
+  });
+  onDragEnd = result =>{
+    const {destination, source, draggableId} = result;
+
+    if (!destination) {
+      return;
+    }
+
+    // If it doesn't move, don't do anything.
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    // Moving within the same stack
+    if (source.droppableId === destination.droppableId) {
+
+      let taskList = this.state.dashboard[source.droppableId].tasks;
+
+      let selectedTasks = taskList.splice(source.index, 1);
+      taskList.splice(destination.index, 0, selectedTasks[0]);
+
+      this.setState({dashboard: this.state.dashboard}, ()=>{this.saveDashboard();});
+    } else {
+      // Moving to a different stack.
+      let sourceList = this.state.dashboard[source.droppableId].tasks;
+      let destinationList = this.state.dashboard[destination.droppableId].tasks;
+
+      let selectedTasks = sourceList.splice(source.index, 1);
+      destinationList.splice(destination.index, 0, selectedTasks[0]);
+
+      this.setState({dashboard: this.state.dashboard}, ()=>{this.saveDashboard();});
+    }
+  };
   render() {
     return (
       <div>
@@ -76,12 +162,14 @@ class App extends Component {
             <h3 className="stack_title">In-Progress</h3>
             <h3 className="stack_title">Completed</h3>
           </div>
-          <div className="stacks">
-            <Stack tasks={this.state.dashboard.backlog.tasks} />
-            <Stack tasks={this.state.dashboard.assigned.tasks} />
-            <Stack tasks={this.state.dashboard.inProgress.tasks} />
-            <Stack tasks={this.state.dashboard.complete.tasks} />
-          </div>
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            <div className="stacks">
+              <Stack tasks={this.state.dashboard.backlog.tasks} id="backlog"/>
+              <Stack tasks={this.state.dashboard.assigned.tasks} id="assigned"/>
+              <Stack tasks={this.state.dashboard.inProgress.tasks} id="inProgress"/>
+              <Stack tasks={this.state.dashboard.complete.tasks} id="complete"/>
+            </div>
+          </DragDropContext>
         </div>
         <ModalRoute
           component={Modal}
