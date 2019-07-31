@@ -12,10 +12,11 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import {logoutUser} from '../api/user.js'
 import {withRouter} from 'react-router-dom'
 import {getDashboard} from '../api/dashboard';
+import { throttle } from "throttle-debounce";
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = /*mockdata*/ {
       isFetching: true,
       dashboard: {
@@ -41,14 +42,18 @@ class App extends Component {
         assigned: {
           tasks: [
             {
+              _id: 4,
+              title: "Task Title",
+              category: "code"
+
+            },
+            {
+              _id: 5,
               title: "Task Title",
               category: "code"
             },
             {
-              title: "Task Title",
-              category: "code"
-            },
-            {
+              _id: 6,
               title: "Task Title",
               category: "testing"
             }
@@ -57,14 +62,17 @@ class App extends Component {
         inProgress: {
           tasks: [
             {
+              _id: 7,
               title: "Task Title",
               category: "code"
             },
             {
+              _id: 8,
               title: "Task Title",
               category: "resources"
             },
             {
+              _id: 9,
               title: "Task Title",
               category: "testing"
             }
@@ -73,14 +81,17 @@ class App extends Component {
         complete: {
           tasks: [
             {
+              _id: 10,
               title: "Task Title",
               category: "resources"
             },
             {
+              _id: 11,
               title: "Hello There",
               category: "research"
             },
             {
+              _id: 12,
               title: "Task Title",
               category: "design"
             }
@@ -98,6 +109,10 @@ class App extends Component {
   logout = ()=>{
     logoutUser(this.props.history);
   };
+  saveDashboard = throttle(5000, () => {
+    console.log("Saving Dashboard");
+    // Call the backend, pass it the current this.state.dashboard
+  });
   onDragEnd = result =>{
     const {destination, source, draggableId} = result;
 
@@ -105,6 +120,7 @@ class App extends Component {
       return;
     }
 
+    // If it doesn't move, don't do anything.
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
@@ -112,53 +128,25 @@ class App extends Component {
       return;
     }
 
-        console.log(this.state.stack[source.droppableId])
-    const start = this.state.stack[source.droppableId]
-    const finish = Array.from(destination.taskIds);
+    // Moving within the same stack
+    if (source.droppableId === destination.droppableId) {
 
-    if (start === finish) {
-      const newTaskIds = Array.from(start.taskIds);
-      newTaskIds.splice(source.index, 1);
-    newTaskIds.splice (destination.index, 0, draggableId);
+      let taskList = this.state.dashboard[source.droppableId].tasks;
 
-    const newStack = {
-      ...newStack,
-      task: newTaskIds,
-    };
+      let selectedTasks = taskList.splice(source.index, 1);
+      taskList.splice(destination.index, 0, selectedTasks[0]);
 
-    const newState = {
-      ...this.state,
-      stacks: {
-        ...this.state.stacks,
-        [newStack.id]: newStack,
-      },
-    };
+      this.setState({dashboard: this.state.dashboard}, ()=>{this.saveDashboard();});
+    } else {
+      // Moving to a different stack.
+      let sourceList = this.state.dashboard[source.droppableId].tasks;
+      let destinationList = this.state.dashboard[destination.droppableId].tasks;
 
-    this.setState(newState);
-    return;
+      let selectedTasks = sourceList.splice(source.index, 1);
+      destinationList.splice(destination.index, 0, selectedTasks[0]);
+
+      this.setState({dashboard: this.state.dashboard}, ()=>{this.saveDashboard();});
     }
-    const startTaskIds = Array.from(start.taskIds);
-    startTaskIds.splice(source.index, 1);
-    const newStart = {
-      ...start,
-      taskIds: startTaskIds,
-    };
-    const finishedTaskIds = Array.from(finish.taskIds);
-    finishedTaskIds.splice(destination.index, 0, draggableId);
-    const newFinish = {
-      ...finish,
-      taskIds: finishedTaskIds,
-    };
-
-    const newState = {
-      ...this.state,
-      columns: {
-        ...this.state.stacks,
-        [newStart.id]: newStart,
-        [newFinish.id]: newFinish,
-      },
-    };
-    this.setState(newState);
   };
   render() {
     return (
@@ -190,10 +178,10 @@ class App extends Component {
           </div>
           <DragDropContext onDragEnd={this.onDragEnd}>
             <div className="stacks">
-              <Stack tasks={this.state.dashboard.backlog.tasks} id="backlog-stack"/>
-              <Stack tasks={this.state.dashboard.assigned.tasks} id="assigned-stack"/>
-              <Stack tasks={this.state.dashboard.inProgress.tasks} id="inProgress-stack"/>
-              <Stack tasks={this.state.dashboard.complete.tasks} id="complete-stack"/>
+              <Stack tasks={this.state.dashboard.backlog.tasks} id="backlog"/>
+              <Stack tasks={this.state.dashboard.assigned.tasks} id="assigned"/>
+              <Stack tasks={this.state.dashboard.inProgress.tasks} id="inProgress"/>
+              <Stack tasks={this.state.dashboard.complete.tasks} id="complete"/>
             </div>
           </DragDropContext>
         </div>
