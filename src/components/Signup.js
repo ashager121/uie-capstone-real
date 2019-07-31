@@ -44,7 +44,7 @@ export default class Signup extends React.Component {
         event.preventDefault();
     }
     setAvatar = e => {
-        console.log('clicked')
+        console.log('selected')
     }
 
     render() {
