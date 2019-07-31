@@ -11,7 +11,8 @@ export function getDashboard(history) {
   return Axios.get('/api/dashboard')
     .then(res => {
       if (!redirectToLogin(history, res)) {
-        console.log('data: ' + JSON.stringify(res.data));
+        // console.log('data: ' + JSON.stringify(res.data));
+        // console.log(res.data);
         return JSON.parse(JSON.stringify(res.data.data));
       }
     }).catch((err) => {
