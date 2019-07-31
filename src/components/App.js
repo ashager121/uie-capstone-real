@@ -45,8 +45,7 @@ class App extends Component {
     logoutUser(this.props.history);
   };
   createItem=() => {
-    this.setState()
-    return Axios.push(`api/backlog/{}`)
+    this.props.history.push('/dashboard/details/new')
   }
   render() {
     return (
@@ -69,7 +68,7 @@ class App extends Component {
           </div>
           <div className="stack_wrapper">
             <h3 className="stack_title">Backlog
-              <button id="addcard">
+              <button id="addcard" onClick={this.createItem}>
                 <img id="addcardbtn" src={addbtn} alt="add new card"></img>
               </button>
             </h3>

@@ -9,7 +9,8 @@ import Med from '../assets/medp.svg';
 import High from '../assets/highp.svg';
 import Block from '../assets/blockp.svg';
 // import Avatar from'./Avatar';
-
+import {getTask} from '../api/task';
+import {withRouter} from 'react-router-dom'
 export default class Modal extends Component {
 
     getCardColor() {
@@ -28,46 +29,38 @@ export default class Modal extends Component {
     
     constructor() {
         super()
-        this.state = //mockdata
+        this.state = 
             {
                 task: {
-                    _id: 0,
-                    title: "Task Title",
-                    description: "lorem ipsum whatever this is a long task description test.",
-                    category: "code",
-                    state: 'Backlog',
-                    users: {
-                        name: "George",
+                    title: "",
+                    description: "",
+                    category: "",
+                    state: '',
+                    assignees: [{
+                        name: "",
                         imageUrl: "",
-                        _id: "0",
-                        timestamp: "Due: 01/01/01"
-                    },
-                    comments: [
-                        {
-                            _id: "0",
-                            user: {
-                                name: "Nigel",
-                                imageUrl: "",
-                                _id: "0"
-                            },
-                            timestamp: "Due: 01/01/01",
-                            comment: "Thank you for posting this task, we will get right on it."
-                        },
-                        {
-                            _id: "1",
-                            user: {
-                                name: "Nigel",
-                                imageUrl: "",
-                                _id: "4"
-                            },
-                            timestamp: "Due: 01/01/01",
-                            comment: "Test stuff"
-                        }
-                    ],
-                    input: "input"
-                }
+                        _id: "",
+                        timestamp: ""
+                    }],
+                    comments:[
+                        
+                    ]
+                },
+                isNewTask: false
             }
     }
+    componentDidMount = () => {
+        if (this.props.match.params.taskId =='new'){
+            this.setState({isNewTask: true})
+        }
+        else {
+            getTask(this.props.match.params.taskId, this.props.history).then((task)=> {
+          // console.log("App: " + dashboard);
+          console.log(task);
+          this.setState({task: task.data, isFetching: false});
+        }
+        )}
+      }
     render() {
         return (
             <section className="modal__wrapper" >
@@ -94,7 +87,7 @@ export default class Modal extends Component {
                         </div>
                 </div>
                     <h2>{this.state.task.title}</h2>
-                    <h5>{this.state.task.users.timestamp}</h5>
+                    <h5>{this.state.task.dueDate}</h5>
                     <h3>{this.state.task.description}</h3>
                     <p></p>
                     <div className="AssignedUsers">
@@ -103,10 +96,10 @@ export default class Modal extends Component {
                     <div className="comments">
                         <div className="comments">
                             <img src={Photo} alt="user" />
-                            <h6>{this.state.task.users.name}</h6>
-                            {this.state.task.comments.map((comment, key) => {
+                            {/* <h6>{this.state.task.assignees[0].name}</h6> */}
+                            {/* {this.state.task.comments.map((comment, key) => {
                                 return <p key={comment._id}>{comment.comment}</p>
-                            })}
+                            })} */}
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,6 @@
+import Axios from 'axios'
+
+import {redirectToLogin} from './redirectHook';
 
 export function getTask(taskId, history) {
   return Axios.get('/api/task/' + taskId)
