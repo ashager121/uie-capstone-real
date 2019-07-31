@@ -8,10 +8,10 @@ import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
 import useravatar from "./../assets/user.svg";
 // import { DragDropContext } from 'react-beautiful-dnd';
-
 import {logoutUser} from '../api/user.js'
 import {withRouter} from 'react-router-dom'
 import {getDashboard} from '../api/dashboard';
+import Axios from 'axios';
 
 class App extends Component {
   constructor() {
@@ -36,13 +36,18 @@ class App extends Component {
   }
   componentDidMount = () => {
     getDashboard(this.props.history).then((dashboard)=> {
-      console.log("App: " + dashboard);
+      // console.log("App: " + dashboard);
+      console.log(dashboard);
       this.setState({dashboard: dashboard, isFetching: false});
     })
   }
   logout = () => {
     logoutUser(this.props.history);
   };
+  createItem=() => {
+    this.setState()
+    return Axios.push(`api/backlog/{}`)
+  }
   render() {
     return (
       <div>

@@ -48,6 +48,17 @@ export function logoutUser(history) {
   
 }
 
+export function getCurrentUser(history) {
+  return Axios.get('/api/users/profile')
+    .then(res => {
+      if (!redirectToLogin(history, res)) {
+        return JSON.parse(JSON.stringify(res.data));
+      }
+    }).catch((err) => {
+      return JSON.parse(JSON.stringify(err.response.data));
+    })
+}
+
 export function getAllUsers(history) {
   return Axios.get('/api/users/profile/all')
     .then(res => {
