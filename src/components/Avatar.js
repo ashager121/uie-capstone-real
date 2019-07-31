@@ -8,7 +8,7 @@ const Avatar = (props) => {
             className="UserAvatars"
             onClick={props.setAvatar}
         >
-            <a className="imageAnchor" href="#">
+            <a className="imageAnchor" href='javascript: void(0)'>
                 <img src={props.image} alt="useravatar" />
             </a>
         </div>

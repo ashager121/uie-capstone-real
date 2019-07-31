@@ -3,9 +3,17 @@ import { Link } from 'react-router-dom'
 import './../sass/App.scss';
 import batonlogo from '../assets/batonlogo.svg';
 import Avatar from './Avatar';
+import anteater from '../assets/avatars/anteater.svg';
 import cobra from '../assets/avatars/cobra.svg';
 import crab from '../assets/avatars/crab.svg';
-import mouse from '../assets/avatars/mouse.svg'
+import frog from '../assets/avatars/frog.svg';
+import giraffe from '../assets/avatars/giraffe.svg';
+import hippo from '../assets/avatars/hippo.svg';
+import lion from '../assets/avatars/lion.svg';
+import mouse from '../assets/avatars/mouse.svg';
+import rabbit from '../assets/avatars/rabbit.svg';
+
+
 
 export default class Signup extends React.Component {
     constructor(props) {
@@ -17,14 +25,32 @@ export default class Signup extends React.Component {
             confirm: "",
             avatars: [
                 {
+                    img_url: anteater
+                },
+                {
                     img_url: cobra
                 },
                 {
                     img_url: crab
                 },
                 {
+                    img_url: frog
+                },
+                {
+                    img_url: giraffe
+                },
+                {
+                    img_url: hippo
+                },
+                {
+                    img_url: lion
+                },
+                {
                     img_url: mouse
-                }
+                },
+                {
+                    img_url: rabbit
+                },
 
             ]
         };
@@ -44,7 +70,8 @@ export default class Signup extends React.Component {
         event.preventDefault();
     }
     setAvatar = e => {
-        console.log('selected')
+        console.log('selected');
+        // this.setState({ image: image })
     }
 
     render() {
