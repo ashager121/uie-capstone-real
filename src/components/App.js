@@ -112,7 +112,8 @@ class App extends Component {
       return;
     }
 
-    const start = this.state.stack[source.droppableId];
+        console.log(this.state.stack[source.droppableId])
+    const start = this.state.stack[source.droppableId]
     const finish = Array.from(destination.taskIds);
 
     if (start === finish) {

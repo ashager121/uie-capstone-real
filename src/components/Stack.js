@@ -8,7 +8,7 @@ export default class Stack extends Component {
     // pass stacks as a prop
     render() {
         var tasksList = this.props.tasks.map((task, index) => {
-            return <Card task={task} index={index} />
+            return <Card task={task} index={index} key={index} />
         })
         return (
             <section className="board" >

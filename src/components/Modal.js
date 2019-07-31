@@ -61,20 +61,20 @@ export default class Modal extends Component {
                         <div class="dropdown">
                         <button class="dropbtn">Category</button>
                             <div class="dropdown-content">
-                                <a id='codecategory'>Code</a>
-                                <a id='researchcategory'>Research</a>
-                                <a id='designcategory'>Design</a>
-                                <a id='resourcescategory'>Resources</a>
-                                <a id='testingcategory'>Testing</a>
+                                <span  id='codecategory'>Code</span>
+                                <span id='researchcategory'>Research</span>
+                                <span id='designcategory'>Design</span>
+                                <span id='resourcescategory'>Resources</span>
+                                <span id='testingcategory'>Testing</span>
                             </div>
                         </div>
                         <div class="dropdown">
                         <button class="dropbtn">Priority</button>
                             <div class="dropdown-content">
-                                <a><img id='lowp' src={Low}></img></a>
-                                <a><img id='medp' src={Med}></img></a>                
-                                <a><img id='medp' src={High}></img></a>
-                                <a><img id='medp' src={Block}></img></a>      
+                                <span><img id='lowp' src={Low} alt="animal"></img></span>
+                                <span><img id='medp' src={Med} alt="animal"></img></span>                
+                                <span><img id='medp' src={High} alt="animal"></img></span>
+                                <span><img id='medp' src={Block} alt="animal"></img></span>      
                             </div>
                         </div>
                 </div>
