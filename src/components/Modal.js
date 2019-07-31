@@ -9,8 +9,8 @@ import Med from '../assets/medp.svg';
 import High from '../assets/highp.svg';
 import Block from '../assets/blockp.svg';
 // import Avatar from'./Avatar';
-import {getTask} from '../api/task';
-import {withRouter} from 'react-router-dom'
+import { getTask } from '../api/task';
+import { withRouter } from 'react-router-dom'
 export default class Modal extends Component {
 
     getCardColor() {
@@ -26,10 +26,10 @@ export default class Modal extends Component {
             return 'board__card--resources'
         }
     }
-    
+
     constructor() {
         super()
-        this.state = 
+        this.state =
             {
                 task: {
                     title: "",
@@ -42,32 +42,33 @@ export default class Modal extends Component {
                         _id: "",
                         timestamp: ""
                     }],
-                    comments:[
-                        
+                    comments: [
+
                     ]
                 },
                 isNewTask: false
             }
     }
     componentDidMount = () => {
-        if (this.props.match.params.taskId =='new'){
-            this.setState({isNewTask: true})
+        if (this.props.match.params.taskId == 'new') {
+            this.setState({ isNewTask: true })
         }
         else {
-            getTask(this.props.match.params.taskId, this.props.history).then((task)=> {
-          // console.log("App: " + dashboard);
-          console.log(task);
-          this.setState({task: task.data, isFetching: false});
+            getTask(this.props.match.params.taskId, this.props.history).then((task) => {
+                // console.log("App: " + dashboard);
+                console.log(task);
+                this.setState({ task: task.data, isFetching: false });
+            }
+            )
         }
-        )}
-      }
+    }
     render() {
         return (
             <section className="modal__wrapper" >
                 <div className="modal__body">
                     <div class="category-wrapper">
                         <div class="dropdown">
-                        <button class="dropbtn">Category</button>
+                            <button class="dropbtn">Category</button>
                             <div class="dropdown-content">
                                 <a id='codecategory'>Code</a>
                                 <a id='researchcategory'>Research</a>
@@ -77,31 +78,32 @@ export default class Modal extends Component {
                             </div>
                         </div>
                         <div class="dropdown">
-                        <button class="dropbtn">Priority</button>
+                            <button class="dropbtn">Priority</button>
                             <div class="dropdown-content">
                                 <a><img id='lowp' src={Low}></img></a>
-                                <a><img id='medp' src={Med}></img></a>                
+                                <a><img id='medp' src={Med}></img></a>
                                 <a><img id='medp' src={High}></img></a>
-                                <a><img id='medp' src={Block}></img></a>      
+                                <a><img id='medp' src={Block}></img></a>
                             </div>
                         </div>
-                </div>
-                    <h2>{this.state.task.title}</h2>
-                    <h5>{this.state.task.dueDate}</h5>
-                    <h3>{this.state.task.description}</h3>
-                    <p></p>
-                    <div className="AssignedUsers">
-                        {}
                     </div>
-                    <div className="comments">
+                    <form>
+                        <input>{this.state.task.title}</input>
+                        <input>{this.state.task.dueDate}</input>
+                        <input>{this.state.task.description}</input>
+                        <div className="AssignedUsers">
+                            {this.state.tasks.assignees}
+                        </div>
                         <div className="comments">
-                            <img src={Photo} alt="user" />
-                            {/* <h6>{this.state.task.assignees[0].name}</h6> */}
-                            {/* {this.state.task.comments.map((comment, key) => {
+                            <div className="comments">
+                                <img src={Photo} alt="user" />
+                                {/* <h6>{this.state.task.assignees[0].name}</h6> */}
+                                {/* {this.state.task.comments.map((comment, key) => {
                                 return <p key={comment._id}>{comment.comment}</p>
                             })} */}
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </section>
         )
