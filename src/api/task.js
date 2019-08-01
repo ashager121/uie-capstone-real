@@ -20,7 +20,9 @@ export function updateTask(task, history) {
   return Axios.post('/api/task/' + task._id, task)
     .then(res => {
       if (!redirectToLogin(history, res)) {
-        return JSON.parse(JSON.stringify(res.data));
+        var task = JSON.parse(JSON.stringify(res.data));
+        task.data.dueDate = new Date(task.data.dueDate);
+        return task;
       }
     }).catch((err) => {
       return JSON.parse(JSON.stringify(err.response.data));
@@ -42,7 +44,9 @@ export function newTask(task, history) {
   return Axios.post('/api/task/new', task)
     .then(res => {
       if (!redirectToLogin(history, res)) {
-        return JSON.parse(JSON.stringify(res.data));
+        var task = JSON.parse(JSON.stringify(res.data));
+        task.data.dueDate = new Date(task.data.dueDate);
+        return task;
       }
     }).catch((err) => {
       return JSON.parse(JSON.stringify(err.response.data));

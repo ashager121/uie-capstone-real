@@ -92,7 +92,6 @@ export default class Modal extends Component {
                     title: "",
                     description: "",
                     category: "",
-                    state: '',
                     assignee: {
                         name: "",
                         imageUrl: "",
@@ -119,29 +118,31 @@ export default class Modal extends Component {
             )
         }
     };
-    save = () => {
+    save = (event) => {
+        event.preventDefault();
         if (this.state.isNewTask) {
             newTask(this.state.task, this.props.history).then(data => {
                 if (data.success == true) {
-                    this.setState({ task: data.data })
+                    this.setState({ task: data.data });
+                    this.props.history.push("/dashboard", {refresh: true})
                 }
                 else {
-                    console.log(data)
+                    alert(JSON.stringify(data));
                 }
             })
         }
         else {
             updateTask(this.state.task, this.props.history).then(data => {
                 if (data.success == true) {
-                    this.setState({ task: data.data })
+                    this.setState({ task: data.data });
+                    this.props.history.push("/dashboard", {refresh: true})
                 }
                 else {
-                    console.log(data)
+                    alert(JSON.stringify(data));
                 }
             })
         }
-
-    }
+    };
     render() {
         return (
             <section className={"modal__wrapper " + this.getCardColor()} >

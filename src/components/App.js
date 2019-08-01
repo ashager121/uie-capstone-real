@@ -9,8 +9,6 @@ import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
 import useravatar from "./../assets/user.svg";
 import { DragDropContext } from 'react-beautiful-dnd';
-import { newTask } from '../api/task.js';
-import { getCurrentUser } from '../api/user.js';
 import { logoutUser } from '../api/user.js';
 import { withRouter } from 'react-router-dom';
 import { getDashboard } from '../api/dashboard';
@@ -88,15 +86,23 @@ class App extends Component {
     }
   }
   componentDidMount = () => {
+    this.props.history.listen((location)=>{
+      if (location.state && location.state.refresh) {
+        this.fetchData();
+      }
+    });
+    this.fetchData();
+  };
+  fetchData = () => {
     getDashboard(this.props.history).then((dashboard) => {
       // console.log("App: " + dashboard);
       console.log(dashboard);
       this.setState({ dashboard: dashboard, isFetching: false });
-    })
-  }
+    });
+  };
   newTask = () => {
     this.props.history.push('/dashboard/details/new')
-  }
+  };
 
   logout = () => {
     logoutUser(this.props.history);

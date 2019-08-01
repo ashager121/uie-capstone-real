@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const Task = mongoose.model('Task');
+const Stack = mongoose.model('Stack');
 const User = mongoose.model('User');
 const Comment = mongoose.model('Comment');
 
@@ -45,7 +46,6 @@ router.post('/:taskId', (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-
   // First grab all users for the assignees
   User.find({})
     .select('_id name email imageUrl')
@@ -58,13 +58,28 @@ router.post('/:taskId', (req, res) => {
       if (!updatedTask.comments) {
         updatedTask.comments = [];
       }
-      updatedTask.assignee = userMap[updatedTask.assignee._id];
+      if (!updatedTask.assignee || !updatedTask.assignee._id) {
+        updatedTask.assignee = req.user;
+      } else {
+        updatedTask.assignee = userMap[updatedTask.assignee._id];
+      }
 
       if (req.params.taskId == 'new') {
         let newTask = new Task(req.body);
-        newTask.save((err, data) => {
+        newTask.save((err, dbTask) => {
           if (err) return res.json({ success: false, error: err });
-          return res.json({ success: true, data: data });
+          Stack.findOne({name: "Backlog"})
+            .populate({
+              path: 'tasks'
+            })
+            .exec((err, backlog) => {
+              if (err) return res.json({ success: false, error: err });
+              backlog.tasks.splice(0, 0, newTask);
+              backlog.save((err, data)=>{
+                if (err) return res.json({ success: false, error: err });
+                return res.json({ success: true, data: dbTask });
+              })
+            });
         });
       } else {
         Task.findById(req.params.taskId)
@@ -92,7 +107,6 @@ router.post('/:taskId', (req, res) => {
             });
           });
       }
-
     });
 });
 

@@ -91,8 +91,10 @@ function initData() {
   }
 
   async function parseTask(task) {
+    var origAssignee = task.assignee;
     task.assignee = await parseUser(task.assignee);
-    
+    // for some reason the first time doesn't do it?
+    task.assignee = await parseUser(origAssignee);
     for(var j = 0; j < task.comments.length; j++) {
       var comment = task.comments[j];
       task.comments[j] = await parseComment(comment);
@@ -119,7 +121,9 @@ function initData() {
             if (err) throw err;
             newUser.password = hash;
             return await newUser
-              .save()
+              .save((err, dbUser) => {
+                return dbUser;
+              })
           });
         });
       }
