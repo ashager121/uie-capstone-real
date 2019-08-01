@@ -91,10 +91,8 @@ function initData() {
   }
 
   async function parseTask(task) {
-    for(var i = 0; i < task.assignees.length; i++) {
-      var user = task.assignees[i];
-      task.assignees[i] = await parseUser(user);
-    }
+    task.assignee = await parseUser(task.assignee);
+    
     for(var j = 0; j < task.comments.length; j++) {
       var comment = task.comments[j];
       task.comments[j] = await parseComment(comment);
