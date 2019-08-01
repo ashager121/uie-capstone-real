@@ -9,9 +9,9 @@ import Med from '../assets/medp.svg';
 import High from '../assets/highp.svg';
 import Block from '../assets/blockp.svg';
 import Avatar from './Avatar';
-import { getTask } from '../api/task';
+import { getTask, updateTask, newTask } from '../api/task';
 import { withRouter } from 'react-router-dom'
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default class Modal extends Component {
@@ -60,7 +60,7 @@ export default class Modal extends Component {
             ...this.state,
             task: {
                 ...this.state.task,
-                category: event.target.value
+                category: event.currentTarget.dataset.value
             }
         });
     };
@@ -69,7 +69,7 @@ export default class Modal extends Component {
             ...this.state,
             task: {
                 ...this.state.task,
-                priority: event.target.value
+                priority: event.currentTarget.dataset.value
             }
         });
     };
@@ -111,7 +111,27 @@ export default class Modal extends Component {
         }
     }
     save = () => {
-        // this.props.history.push
+        if (this.state.isNewTask) {
+            newTask(this.state.task, this.props.history).then(data => {
+                if (data.success == true) {
+                    this.setState({ task: data.data })
+                }
+                else {
+                    console.log(data)
+                }
+            })
+        }
+        else {
+            updateTask(this.state.task, this.props.history).then(data => {
+                if (data.success == true) {
+                    this.setState({ task: data.data })
+                }
+                else {
+                    console.log(data)
+                }
+            })
+        }
+
     }
     render() {
         return (
@@ -121,20 +141,20 @@ export default class Modal extends Component {
                         <div className="dropdown">
                             <button className="dropbtn">Category</button>
                             <div className="dropdown-content">
-                                <span id='codecategory' value="code" onClick={this.changeCategory}>Code</span>
-                                <span id='researchcategory' value="research" onClick={this.changeCategory}>Research</span>
-                                <span id='designcategory' value="design" onClick={this.changeCategory}>Design</span>
-                                <span id='resourcescategory' value="resources" onClick={this.changeCategory}>Resources</span>
-                                <span id='testingcategory' value="testing" onClick={this.changeCategory}>Testing</span>
+                                <span id='codecategory' data-value="code" onClick={this.changeCategory}>Code</span>
+                                <span id='researchcategory' data-value="research" onClick={this.changeCategory}>Research</span>
+                                <span id='designcategory' data-value="design" onClick={this.changeCategory}>Design</span>
+                                <span id='resourcescategory' data-value="resources" onClick={this.changeCategory}>Resources</span>
+                                <span id='testingcategory' data-value="testing" onClick={this.changeCategory}>Testing</span>
                             </div>
                         </div>
                         <div className="dropdown">
                             <button className="dropbtn">{this.renderPriority()}</button>
                             <div className="dropdown-content">
-                                <span onClick={this.changePriority} value="lowp"><img id='lowp' src={Low} alt="animal"></img></span>
-                                <span onClick={this.changePriority} value="medp"><img id='medp' src={Med} alt="animal"></img></span>
-                                <span onClick={this.changePriority} value="highp"><img id='highp' src={High} alt="animal"></img></span>
-                                <span onClick={this.changePriority} value="blockp"><img id='blockp' src={Block} alt="animal"></img></span>
+                                <span onClick={this.changePriority} data-value="lowp"><img id='lowp' src={Low} alt="animal"></img></span>
+                                <span onClick={this.changePriority} data-value="medp"><img id='medp' src={Med} alt="animal"></img></span>
+                                <span onClick={this.changePriority} data-value="highp"><img id='highp' src={High} alt="animal"></img></span>
+                                <span onClick={this.changePriority} data-value="blockp"><img id='blockp' src={Block} alt="animal"></img></span>
                             </div>
                         </div>
                     </div>

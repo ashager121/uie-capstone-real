@@ -9,11 +9,11 @@ import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
 import useravatar from "./../assets/user.svg";
 import { DragDropContext } from 'react-beautiful-dnd';
-import {newTask} from '../api/task.js';
-import {getCurrentUser} from '../api/user.js';
-import {logoutUser} from '../api/user.js';
-import {withRouter} from 'react-router-dom';
-import {getDashboard} from '../api/dashboard';
+import { newTask } from '../api/task.js';
+import { getCurrentUser } from '../api/user.js';
+import { logoutUser } from '../api/user.js';
+import { withRouter } from 'react-router-dom';
+import { getDashboard } from '../api/dashboard';
 import { throttle } from "throttle-debounce";
 
 
@@ -95,7 +95,7 @@ class App extends Component {
     })
   }
   newTask = () => {
-    this.props.history.push('/api/task/new')
+    this.props.history.push('/dashboard/details/new')
   }
 
   logout = () => {
