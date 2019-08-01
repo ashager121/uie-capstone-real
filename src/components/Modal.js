@@ -66,24 +66,24 @@ export default class Modal extends Component {
         return (
             <section className="modal__wrapper" >
                 <div className="modal__body">
-                    <div class="category-wrapper">
-                        <div class="dropdown">
-                            <button class="dropbtn">Category</button>
-                            <div class="dropdown-content">
-                                <span  id='codecategory'>Code</span>
+                    <div className="category-wrapper">
+                        <div className="dropdown">
+                            <button className="dropbtn">Category</button>
+                            <div className="dropdown-content">
+                                <span id='codecategory'>Code</span>
                                 <span id='researchcategory'>Research</span>
                                 <span id='designcategory'>Design</span>
                                 <span id='resourcescategory'>Resources</span>
                                 <span id='testingcategory'>Testing</span>
                             </div>
                         </div>
-                        <div class="dropdown">
-                            <button class="dropbtn">Priority</button>
-                            <div class="dropdown-content">
+                        <div classNames="dropdown">
+                            <button classNames="dropbtn">Priority</button>
+                            <div classNames="dropdown-content">
                                 <span><img id='lowp' src={Low} alt="animal"></img></span>
-                                <span><img id='medp' src={Med} alt="animal"></img></span>                
+                                <span><img id='medp' src={Med} alt="animal"></img></span>
                                 <span><img id='medp' src={High} alt="animal"></img></span>
-                                <span><img id='medp' src={Block} alt="animal"></img></span>      
+                                <span><img id='medp' src={Block} alt="animal"></img></span>
                             </div>
                         </div>
                     </div>
