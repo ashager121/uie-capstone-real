@@ -15,28 +15,27 @@ export class Profile extends React.Component {
             // avatars:"",
         }
     }
-};
 
-logout = () => {
-    logoutUser(this.props.history);
-}
+    logout = () => {
+        logoutUser(this.props.history);
+    }
 
-render() {
-    return (
+    render() {
+        return (
 
-        <div className="ProfileContainer" >
-            <button onClick={this.logout}>Logout</button>
-            <img src={batonlogo} alt="Logo" />
-            <div className="Profile">
-                <form className="Profile__form" onSubmit={this.handleSubmit}>
-                    <label ClassName="Profile__label">
-                        Email Address
+            <div className="ProfileContainer" >
+                <button onClick={this.logout}>Logout</button>
+                <img src={batonlogo} alt="Logo" />
+                <div className="Profile">
+                    <form className="Profile__form" onSubmit={this.handleSubmit}>
+                        <label ClassName="Profile__label">
+                            Email Address
                     </label>
-                    <input className="Profile__input" type="text" value={this.state.value}
-                        onChange={this.handleChange} />
-                </form>
+                        <input className="Profile__input" type="text" value={this.state.value}
+                            onChange={this.handleChange} />
+                    </form>
+                </div>
             </div>
-        </div>
 
-    )
-}
+        )
+    }
