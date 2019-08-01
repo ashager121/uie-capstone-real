@@ -7,7 +7,7 @@ export function getTask(taskId, history) {
     .then(res => {
       if (!redirectToLogin(history, res)) {
         var task = JSON.parse(JSON.stringify(res.data));
-        task.dueDate = new Date(task.dueDate).toUTCString();
+        task.data.dueDate = new Date(task.data.dueDate);//
         return task;
       }
     }).catch((err) => {

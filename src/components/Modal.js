@@ -11,7 +11,7 @@ import Block from '../assets/blockp.svg';
 import Avatar from './Avatar';
 import { getTask, updateTask, newTask } from '../api/task';
 import { withRouter } from 'react-router-dom'
-// import DatePicker from "react-datepicker";
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default class Modal extends Component {
@@ -55,6 +55,15 @@ export default class Modal extends Component {
             }
         });
     };
+    changeDueDate = newDate => {
+        this.setState({
+            ...this.state,
+            task: {
+                ...this.state.task,
+                dueDate: newDate
+            }
+        });
+    };
     changeCategory = event => {
         this.setState({
             ...this.state,
@@ -76,7 +85,7 @@ export default class Modal extends Component {
 
 
     constructor() {
-        super()
+        super();
         this.state =
             {
                 task: {
@@ -109,7 +118,7 @@ export default class Modal extends Component {
             }
             )
         }
-    }
+    };
     save = () => {
         if (this.state.isNewTask) {
             newTask(this.state.task, this.props.history).then(data => {
@@ -160,10 +169,10 @@ export default class Modal extends Component {
                     </div>
                     <form>
                         <input type="text" id="title" onChange={this.handleChange} value={this.state.task.title} />
-                        {/* <DatePicker id="dueDate"
+                        <DatePicker id="dueDate"
                             selected={this.state.task.dueDate}
-                            onChange={this.handleChange}
-                        /> */}
+                            onChange={this.changeDueDate}
+                        />
                         <input type="text" id="description" onChange={this.handleChange} value={this.state.task.description} />
 
                         <div className="AssignedUsers">
