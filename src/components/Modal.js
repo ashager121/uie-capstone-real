@@ -77,9 +77,9 @@ export default class Modal extends Component {
                                 <span id='testingcategory'>Testing</span>
                             </div>
                         </div>
-                        <div classNames="dropdown">
-                            <button classNames="dropbtn">Priority</button>
-                            <div classNames="dropdown-content">
+                        <div className="dropdown">
+                            <button className="dropbtn">Priority</button>
+                            <div className="dropdown-content">
                                 <span><img id='lowp' src={Low} alt="animal"></img></span>
                                 <span><img id='medp' src={Med} alt="animal"></img></span>
                                 <span><img id='medp' src={High} alt="animal"></img></span>
