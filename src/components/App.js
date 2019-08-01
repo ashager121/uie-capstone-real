@@ -3,6 +3,7 @@ import Stack from './Stack';
 import './../sass/App.scss';
 import { ModalRoute } from 'react-router-modal';
 import Modal from './Modal';
+import Profile from './Profile';
 // import {Link}from 'react-router-dom';
 import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
@@ -14,6 +15,7 @@ import {logoutUser} from '../api/user.js';
 import {withRouter} from 'react-router-dom';
 import {getDashboard} from '../api/dashboard';
 import { throttle } from "throttle-debounce";
+
 
 class App extends Component {
   constructor() {
@@ -86,10 +88,10 @@ class App extends Component {
     }
   }
   componentDidMount = () => {
-    getDashboard(this.props.history).then((dashboard)=> {
+    getDashboard(this.props.history).then((dashboard) => {
       // console.log("App: " + dashboard);
       console.log(dashboard);
-      this.setState({dashboard: dashboard, isFetching: false});
+      this.setState({ dashboard: dashboard, isFetching: false });
     })
   }
   newTask = () => {
@@ -103,8 +105,8 @@ class App extends Component {
     console.log("Saving Dashboard");
     // Call the backend, pass it the current this.state.dashboard
   });
-  onDragEnd = result =>{
-    const {destination, source, draggableId} = result;
+  onDragEnd = result => {
+    const { destination, source, draggableId } = result;
 
     if (!destination) {
       return;
@@ -126,7 +128,7 @@ class App extends Component {
       let selectedTasks = taskList.splice(source.index, 1);
       taskList.splice(destination.index, 0, selectedTasks[0]);
 
-      this.setState({dashboard: this.state.dashboard}, ()=>{this.saveDashboard();});
+      this.setState({ dashboard: this.state.dashboard }, () => { this.saveDashboard(); });
     } else {
       // Moving to a different stack.
       let sourceList = this.state.dashboard[source.droppableId].tasks;
@@ -135,7 +137,7 @@ class App extends Component {
       let selectedTasks = sourceList.splice(source.index, 1);
       destinationList.splice(destination.index, 0, selectedTasks[0]);
 
-      this.setState({dashboard: this.state.dashboard}, ()=>{this.saveDashboard();});
+      this.setState({ dashboard: this.state.dashboard }, () => { this.saveDashboard(); });
     }
   };
   render() {
@@ -146,7 +148,8 @@ class App extends Component {
           <header className="boardHeader">
             <h1 className="boardHeader_title">Sprint Title</h1>
             <h3>Date Range</h3>
-            <button id='headavatar'><img src={useravatar} alt="user menu"></img></button>
+            <button id='headavatar'><img src={useravatar} alt="user menu"></img>
+            </button>
           </header>
           <div className="filters">
             <div className="filters__wrapper">
@@ -169,10 +172,10 @@ class App extends Component {
           </div>
           <DragDropContext onDragEnd={this.onDragEnd}>
             <div className="stacks">
-              <Stack tasks={this.state.dashboard.backlog.tasks} id="backlog"/>
-              <Stack tasks={this.state.dashboard.assigned.tasks} id="assigned"/>
-              <Stack tasks={this.state.dashboard.inProgress.tasks} id="inProgress"/>
-              <Stack tasks={this.state.dashboard.complete.tasks} id="complete"/>
+              <Stack tasks={this.state.dashboard.backlog.tasks} id="backlog" />
+              <Stack tasks={this.state.dashboard.assigned.tasks} id="assigned" />
+              <Stack tasks={this.state.dashboard.inProgress.tasks} id="inProgress" />
+              <Stack tasks={this.state.dashboard.complete.tasks} id="complete" />
             </div>
           </DragDropContext>
         </div>
