@@ -16,12 +16,10 @@ const TaskSchema = new Schema(
     priority: String,
     category: String,
     description: String,
-    assignees: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    ],
+    assignee: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    },
     comments: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Comment'

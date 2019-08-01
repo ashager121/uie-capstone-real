@@ -18,7 +18,7 @@ router.get('/:taskId', (req, res) => {
 
   Task.findById(req.params.taskId)
     .populate([{
-      path:'assignees',
+      path:'assignee',
       select: ['name', 'email', 'imageUrl']
     }, {
       path: 'comments',
@@ -58,12 +58,7 @@ router.post('/:taskId', (req, res) => {
       if (!updatedTask.comments) {
         updatedTask.comments = [];
       }
-      if (!updatedTask.assignees) {
-        updatedTask.assignees = [];
-      }
-      for (let i=0; i < updatedTask.assignees.length; i++) {
-        updatedTask.assignees[i] = userMap[updatedTask.assignees[i]._id];
-      }
+      updatedTask.assignee = userMap[updatedTask.assignee._id];
 
       if (req.params.taskId == 'new') {
         let newTask = new Task(req.body);
@@ -74,7 +69,7 @@ router.post('/:taskId', (req, res) => {
       } else {
         Task.findById(req.params.taskId)
           .populate([{
-            path:'assignees',
+            path:'assignee',
             select: ['name', 'email', 'imageUrl']
           }, {
             path: 'comments',
@@ -90,7 +85,7 @@ router.post('/:taskId', (req, res) => {
             dbtask.priority = updatedTask.priority;
             dbtask.category = updatedTask.category;
             dbtask.description = updatedTask.description;
-            dbtask.assignees = updatedTask.assignees;
+            dbtask.assignee = updatedTask.assignee;
             dbtask.save((err) => {
               if (err) return res.json({ success: false, error: err });
               return res.json({ success: true, data: dbtask });
@@ -113,7 +108,7 @@ router.post('/:taskId/comment', (req, res) => {
 
   Task.findById(req.params.taskId)
     .populate([{
-      path:'assignees',
+      path:'assignee',
       select: ['name', 'email', 'imageUrl']
     }, {
       path: 'comments',

@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
       path: 'tasks',
       select: ['title', 'dueDate', 'priority', 'category'],
       populate: {
-        path: 'assignees',
+        path: 'assignee',
         select: ['name', 'imageUrl', 'email']
       }
     }

@@ -36,12 +36,11 @@ export default class Modal extends Component {
                     description: "",
                     category: "",
                     state: '',
-                    assignees: [{
+                    assignee: {
                         name: "",
                         imageUrl: "",
-                        _id: "",
-                        timestamp: ""
-                    }],
+                        _id: ""
+                    },
                     comments: [
 
                     ]
@@ -88,11 +87,11 @@ export default class Modal extends Component {
                         </div>
                     </div>
                     <form>
-                        <input>{this.state.task.title}</input>
-                        <input>{this.state.task.dueDate}</input>
-                        <input>{this.state.task.description}</input>
+                        <input value={this.state.task.title} />
+                        <input value={this.state.task.dueDate} />
+                        <input value={this.state.task.description} />
                         <div className="AssignedUsers">
-                            {this.state.tasks.assignees}
+                            {this.state.task.assignee.name}
                         </div>
                         <div className="comments">
                             <div className="comments">
