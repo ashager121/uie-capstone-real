@@ -9,7 +9,7 @@ import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
 import useravatar from "./../assets/user.svg";
 import { DragDropContext } from 'react-beautiful-dnd';
-
+import { newTask } from '../api/task.js'
 import { logoutUser } from '../api/user.js'
 import { withRouter } from 'react-router-dom'
 import { getDashboard } from '../api/dashboard';
@@ -93,6 +93,10 @@ class App extends Component {
       this.setState({ dashboard: dashboard, isFetching: false });
     })
   }
+  newTask = e => {
+    let task = this.state.task
+  }
+
   logout = () => {
     logoutUser(this.props.history);
   };
@@ -157,7 +161,7 @@ class App extends Component {
           </div>
           <div className="stack_wrapper">
             <h3 className="stack_title">Backlog
-              <button id="addcard" onClick={this.createItem}>
+              <button id="addcard" onClick={this.newTask}>
                 <img id="addcardbtn" src={addbtn} alt="add new card"></img>
               </button>
             </h3>
