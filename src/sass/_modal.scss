@@ -32,15 +32,22 @@
 }
 #lowp{
     width: 40px;
+    cursor: pointer;
 }
 #medp{
     width: 40px;
+    cursor: pointer;
 }
 #highp{
     width: 40px;
+    cursor: pointer;
 }
 #blockp{
     width: 40px;
+    cursor: pointer;
+}
+#codecategory, #researchcategory, #designcategory, #resourcescategory, #testingcategory {
+    cursor: pointer;
 }
 #codecategory{
     background-color: $codeColor;

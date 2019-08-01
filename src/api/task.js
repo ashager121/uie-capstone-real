@@ -1,12 +1,14 @@
 import Axios from 'axios'
 
-import {redirectToLogin} from './redirectHook';
+import { redirectToLogin } from './redirectHook';
 
 export function getTask(taskId, history) {
   return Axios.get('/api/task/' + taskId)
     .then(res => {
       if (!redirectToLogin(history, res)) {
-        return JSON.parse(JSON.stringify(res.data));
+        var task = JSON.parse(JSON.stringify(res.data));
+        task.dueDate = new Date(task.dueDate).toUTCString();
+        return task;
       }
     }).catch((err) => {
       return JSON.parse(JSON.stringify(err.response.data));
@@ -48,7 +50,7 @@ export function newTask(task, history) {
 }
 
 export function commentOnTask(taskId, commentText, history) {
-  return Axios.post('/api/task/' + taskId + '/comment', {comment: commentText})
+  return Axios.post('/api/task/' + taskId + '/comment', { comment: commentText })
     .then(res => {
       if (!redirectToLogin(history, res)) {
         return JSON.parse(JSON.stringify(res.data));
