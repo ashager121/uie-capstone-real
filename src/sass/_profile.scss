@@ -4,32 +4,38 @@
     align-content: center;
     padding-top: 100px;
   }
-  .Profile {
+.Profile {
     padding-top: 25px;
   }
-  .Profile__form{
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    padding-right: 20px;
-  }
-  .Profile__label {
-    font-size: .7rem;
-    padding-top: 10px;
-  }
-  .Profile__input {
-    width: 100%;
-    border-radius: 5px;
-    background-color: $stacksBgColor;
-    color: white;
-    border: none;
-    padding: 10px;
-  }
-  .button {
-    display: flex;
-    justify-content: center;
-    padding: 25px;
-  }
+.Profile__img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+//   .Profile__form{
+//     display: flex;
+//     flex-direction: column;
+//     align-items: left;
+//     padding-right: 20px;
+//   }
+//   .Profile__label {
+//     font-size: .7rem;
+//     padding-top: 10px;
+//   }
+//   .Profile__input {
+//     width: 100%;
+//     border-radius: 5px;
+//     background-color: $stacksBgColor;
+//     color: white;
+//     border: none;
+//     padding: 10px;
+//   }
+//   .button {
+//     display: flex;
+//     flex-direction: flex-start;
+//     padding: 25px;
+//   }
   #logoutbtn {
     background-color: red;
     color: white;
@@ -45,9 +51,9 @@
     cursor: pointer;
   }
 
-  #savebtn {
-    color: white;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
+//   #editbtn {
+//     color: white;
+//     border-radius: 5px;
+//     padding: 10px 20px;
+//     cursor: pointer;
+//   }

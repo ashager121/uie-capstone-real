@@ -4,7 +4,7 @@ import React from "react";
 import batonlogo from '../assets/batonlogo.svg';
 import { logoutUser } from "../api/user";
 import { withRouter } from 'react-router-dom';
-// import Avatar from './Avatar';
+import Avatar from './Avatar';
 import anteater from '../assets/avatars/anteater.svg';
 import cobra from '../assets/avatars/cobra.svg';
 import crab from '../assets/avatars/crab.svg';
@@ -15,7 +15,7 @@ import lion from '../assets/avatars/lion.svg';
 import mouse from '../assets/avatars/mouse.svg';
 import rabbit from '../assets/avatars/rabbit.svg';
 
-class Profile extends React.Component {
+class EditProfile extends React.Component {
     constructor(props) {
         super(props);
 
@@ -63,57 +63,37 @@ class Profile extends React.Component {
     render() {
         return (
 
-            <div className="ProfileContainer" >
-                <button id="backbtn" style={{ textDecoration: 'none', color: 'black' }}>
-                    <Link to="/dashboard" style={{ textDecoration: 'none', color: 'black' }}>Back</Link>
-                </button>
-
-                {/* <img src={batonlogo} alt="Logo" /> */}
-
-                <div className="Profile">
-                    <div className="Profile__img">
-                        <img src={cobra} alt="profile image"></img>
-                    </div>
-                    <div className="Profile__detail">
-                        <h2>Name: Bob Ross</h2>
-                        <h2>Email: bob@gmail.com</h2>
-                    </div>
-                    {/* <div className="buttons"> */}
-                    <div className="button">
-                        <button onClick={this.logout} id="logoutbtn">Logout</button>
-                    </div>
-                    {/* <button type="submit" id="editbtn" style={{ textDecoration: 'none', color: 'black' }}>
-                            Edit
-                    </button> */}
-                    {/* </div> */}
-
-
-
-                    {/* <form className="Profile__form" onSubmit={this.handleSubmit}>
-                        <label className="Profile__label">
+            <div className="editProfileContainer" >
+                <img src={batonlogo} alt="Logo" />
+                <div className="button">
+                    <button onClick={this.logout} id="logoutbtn">Logout</button>
+                </div>
+                <div className="editProfile">
+                    <form className="editProfile__form" onSubmit={this.handleSubmit}>
+                        <label className="editProfile__label">
                             Update Name
                             </label>
-                        <input className="Profile__input" type="text" value={this.state.value}
+                        <input className="editProfile__input" type="text" value={this.state.value}
                             onChange={this.handleChange} />
-                        <label className="Profile__label">
+                        <label className="editProfile__label">
                             Update Email Address
                             </label>
-                        <input className="Profile__input" type="text" value={this.state.value}
+                        <input className="editProfile__input" type="text" value={this.state.value}
                             onChange={this.handleChange} />
 
-                        <label className="Profile__label">
+                        <label className="editProfile__label">
                             Update Password
                             </label>
-                        <input className="Profile__input" type="text" value={this.state.value}
+                        <input className="editProfile__input" type="text" value={this.state.value}
                             onChange={this.handleChange} />
 
-                        <label className="Profile__label">
+                        <label className="editProfile__label">
                             Confirm New Password
                             </label>
-                        <input className="Profile__input" type="text" value={this.state.value}
+                        <input className="editProfile__input" type="text" value={this.state.value}
                             onChange={this.handleChange} />
 
-                        <label className="Profile__label">
+                        <label className="editProfile__label">
                             Update Avatar
                             </label>
 
@@ -137,11 +117,11 @@ class Profile extends React.Component {
                                 Save
                     </button>
                         </div>
-                    </form> */}
+                    </form>
                 </div>
             </div>
 
         )
     }
 }
-export default withRouter(Profile);
+export default withRouter(EditProfile);
