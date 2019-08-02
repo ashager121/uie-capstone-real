@@ -20,6 +20,7 @@ export default class Signup extends React.Component {
         super(props);
 
         this.state = {
+            name: "",
             email: "",
             password: "",
             confirm: "",
@@ -82,6 +83,11 @@ export default class Signup extends React.Component {
                 <div className="SignUp">
                     <form className="SignUp__form" onSubmit={this.handleSubmit}>
                         <label className="SignUp__label">
+                            Name
+                            </label>
+                        <input className="SignUp__input" type="text" value={this.state.value}
+                            onChange={this.handleChange} />
+                        <label className="SignUp__label">
                             Email Address
                             </label>
                         <input className="SignUp__input" type="text" value={this.state.value}
@@ -102,27 +108,29 @@ export default class Signup extends React.Component {
                         <label className="SignUp__label">
                             Avatar
                             </label>
-                    </form>
-                </div>
-                <div className="avatars">
-                    {this.state.avatars.map((avatar) => {
-                        return <div className="col">
-                            <Avatar
-                                image={avatar.img_url}
-                                setAvatar={this.setAvatar}
-                            />
+
+                        <div className="avatars">
+                            {this.state.avatars.map((avatar) => {
+                                return <div className="col">
+                                    <Avatar
+                                        image={avatar.img_url}
+                                        setAvatar={this.setAvatar}
+                                    />
+                                </div>
+                            })}
+
                         </div>
-                    })}
 
-                </div>
+                        <div className="buttons">
+                            <button id="signinbtn1">
+                                <Link to="/signin" style={{ textDecoration: 'none', color: 'white' }}>Sign In</Link>
+                            </button>
+                            <button id="signupbtn1">
+                                <Link to="/dashboard" style={{ textDecoration: 'none', color: 'black' }}>Sign Up</Link>
+                            </button>
+                        </div>
 
-                <div className="buttons">
-                    <button id="signinbtn1">
-                        <Link to="/signin" style={{ textDecoration: 'none', color: 'white' }}>Sign In</Link>
-                    </button>
-                    <button id="signupbtn1">
-                        <Link to="/dashboard" style={{ textDecoration: 'none', color: 'black' }}>Sign Up</Link>
-                    </button>
+                    </form>
                 </div>
             </div>
         );
