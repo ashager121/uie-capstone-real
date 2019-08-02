@@ -30,6 +30,24 @@
     min-width: 50px;
     z-index: 1;
 }
+#title{
+    width: 100%;
+    font-size: 2rem;
+}
+#description{
+    margin-top: 15px;
+    width: 95%;
+    height: 20%;
+    font-size: 1.25rem;
+    background-color: $dashboardBgColor;
+    color: white;
+    border: none;
+}
+input{
+    background-color: $dashboardBgColor;
+    color: white;
+    border: none;
+}
 #lowp{
     padding: 5px;
     width: 40px;

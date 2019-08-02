@@ -4,10 +4,10 @@ import './../sass/App.scss';
 // import { ModalRoute } from 'react-router-modal';
 import Photo from '../assets/user.png';
 // import PropTypes from 'prop-types';
-import Low from '../assets/lowp.svg';
-import Med from '../assets/medp.svg';
-import High from '../assets/highp.svg';
-import Block from '../assets/blockp.svg';
+import Low from '../assets/lowp.png';
+import Med from '../assets/medp.png';
+import High from '../assets/highp.png';
+import Block from '../assets/blockp.png';
 import Avatar from './Avatar';
 import { getTask, updateTask, newTask } from '../api/task';
 import { withRouter } from 'react-router-dom'
@@ -29,16 +29,15 @@ export default class Modal extends Component {
             return 'board__card--resources'
         }
     }
-
-    renderPriority() {
+    renderPriority = () =>{
         if (this.state.task.priority == "lowp") {
-            return 'lowp'
+            this.setState({taskPriorityImage: <img src={Low} alt="animal"/> }) 
         } else if (this.state.task.priority == 'medp') {
-            return 'medp'
+            this.setState({taskPriorityImage: <img src={Med} alt="animal"/> }) 
         } else if (this.state.task.priority == 'highp') {
-            return 'highp'
+            this.setState({taskPriorityImage: <img src={High} alt="animal"/> }) 
         } else if (this.state.task.priority == 'blockp') {
-            return 'blockp'
+            this.setState({taskPriorityImage: <img src={Block} alt="animal"/> }) 
         }
         else {
             return 'Select Priority'
@@ -81,6 +80,7 @@ export default class Modal extends Component {
                 priority: event.currentTarget.dataset.value
             }
         });
+        this.renderPriority()
     };
 
 
@@ -92,6 +92,7 @@ export default class Modal extends Component {
                     title: "",
                     description: "",
                     category: "",
+                    priority: "",
                     assignee: {
                         name: "",
                         imageUrl: "",
@@ -101,6 +102,7 @@ export default class Modal extends Component {
 
                     ]
                 },
+                taskPriorityImage: '',
                 isNewTask: false
             }
     }
@@ -113,10 +115,12 @@ export default class Modal extends Component {
             getTask(this.props.match.params.taskId, this.props.history).then((task) => {
                 // console.log("App: " + dashboard);
                 console.log(task);
-                this.setState({ task: task.data, isFetching: false });
+                this.setState({ task: task.data, isFetching: false }, ()=> this.renderPriority())
             }
             )
         }
+        console.log(this.state)
+        
     };
     save = (event) => {
         event.preventDefault();
@@ -159,7 +163,7 @@ export default class Modal extends Component {
                             </div>
                         </div>
                         <div className="dropdown">
-                            <button className="dropbtn">{this.renderPriority()}</button>
+                            <button className="dropbtn">{this.state.taskPriorityImage}</button>
                             <div className="dropdown-content">
                                 <span onClick={this.changePriority} data-value="lowp"><img id='lowp' src={Low} alt="animal"></img></span>
                                 <span onClick={this.changePriority} data-value="medp"><img id='medp' src={Med} alt="animal"></img></span>
@@ -174,21 +178,21 @@ export default class Modal extends Component {
                             selected={this.state.task.dueDate}
                             onChange={this.changeDueDate}
                         />
-                        <input type="text" id="description" onChange={this.handleChange} value={this.state.task.description} />
+                        <textarea type="text" id="description" onChange={this.handleChange} value={this.state.task.description} />
 
                         <div className="AssignedUsers">
                             {this.state.task.assignee.name}
                             <Avatar image={this.state.task.assignee.imageUrl} />
                         </div>
-                        <div className="comments">
+                        {/* <div className="comments">
                             <div className="comments">
                                 <img src={Photo} alt="user" />
-                                {/* <h6>{this.state.task.assignees[0].name}</h6> */}
-                                {/* {this.state.task.comments.map((comment, key) => {
+                                <h6>{this.state.task.assignees[0].name}</h6>
+                                {this.state.task.comments.map((comment, key) => {
                                 return <p key={comment._id}>{comment.comment}</p>
-                            })} */}
+                            })}
                             </div>
-                        </div>
+                        </div> */}
                         <button className="saveBtn" onClick={this.save}>Save</button>
                     </form>
                 </div>
