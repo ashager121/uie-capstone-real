@@ -8,7 +8,6 @@ import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
 // import useravatar from "./../assets/user.svg";
 import { DragDropContext } from 'react-beautiful-dnd';
-import { logoutUser } from '../api/user.js';
 import { withRouter } from 'react-router-dom';
 import { getDashboard, updateDashboard } from '../api/dashboard';
 import { throttle } from "throttle-debounce";
@@ -114,9 +113,6 @@ class App extends Component {
     this.props.history.push('/dashboard/details/new')
   };
 
-  logout = () => {
-    logoutUser(this.props.history);
-  };
   saveDashboard = throttle(5000, () => {
     console.log("Saving Dashboard");
     updateDashboard(this.state.dashboard, this.props.history).then((dashboard) => {
@@ -163,7 +159,6 @@ class App extends Component {
     return (
       <div>
         <div className="App" >
-          <button onClick={this.logout}>Logout</button>
           <header className="boardHeader">
             <h1 className="boardHeader_title">Sprint Title</h1>
             <h3>Date Range</h3>
