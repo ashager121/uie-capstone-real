@@ -1,8 +1,8 @@
 .modal__wrapper{
     width: 600px;
     height: 500px;
-    border-radius: 20px;
-    border: 10px solid white;
+    // border-radius: 20px;
+    // border: 10px solid white;
     background-color: $dashboardBgColor;
 }
 .modal__body{
@@ -31,38 +31,53 @@
     z-index: 1;
 }
 #lowp{
+    padding: 5px;
     width: 40px;
     cursor: pointer;
 }
 #medp{
+    padding: 5px;
     width: 40px;
     cursor: pointer;
 }
 #highp{
+    padding: 5px;
     width: 40px;
     cursor: pointer;
 }
 #blockp{
+    padding: 5px;
     width: 40px;
     cursor: pointer;
 }
 #codecategory, #researchcategory, #designcategory, #resourcescategory, #testingcategory {
     cursor: pointer;
+    padding: 5px;
 }
 #codecategory{
     background-color: $codeColor;
+    border: 20px solid $codeColor;
+    border-radius: 20px;
 }
 #researchcategory{
     background-color: $researchColor;
+    border: 20px solid $researchColor;
+    border-radius: 20px;
 }
 #designcategory{
     background-color: $designColor;
+    border: 20px solid $designColor;
+    border-radius: 20px;
 }
 #resourcescategory{
     background-color: $resourcesColor;
+    border: 20px solid $resourcesColor;
+    border-radius: 20px;
 }
 #testingcategory{
     background-color: $testingColor;
+    border: 20px solid $testingColor;
+    border-radius: 20px;
 }
 .dropdown-content a {
     color: white;
