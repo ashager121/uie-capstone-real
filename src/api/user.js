@@ -37,6 +37,24 @@ export function register(userData, history) {
     })
 }
 
+// This returns a promise, which gives the error object.
+export function updateUser(userData, history) {
+  // var userData = {
+  //   name: username,
+  //   password: password,
+  //   password2: password2,
+  //   email: email,
+  //   imageUrl: imageUrl
+  // }
+  return Axios.post('/api/users/' + userData._id, userData)
+    .then(res => {
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      history.push('/dashboard')
+    }).catch(err => {
+      return err.response.data;
+    })
+}
+
 export function logoutUser(history) {
   Axios.get('/api/users/logout')
     .then(res => {
