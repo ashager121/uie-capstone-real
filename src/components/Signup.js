@@ -90,13 +90,13 @@ export default class Signup extends React.Component {
                         <label className="SignUp__label">
                             Password
                             </label>
-                        <input className="SignUp__input" type="text" value={this.state.value}
+                        <input className="SignUp__input" type="password" value={this.state.value}
                             onChange={this.handleChange} />
 
                         <label className="SignUp__label">
                             Confirm Password
                             </label>
-                        <input className="SignUp__input" type="text" value={this.state.value}
+                        <input className="SignUp__input" type="password" value={this.state.value}
                             onChange={this.handleChange} />
 
                         <label className="SignUp__label">

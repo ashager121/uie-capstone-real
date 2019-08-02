@@ -69,7 +69,7 @@ class Signin extends React.Component {
                 Password
                             </label>
               <input
-                type="text"
+                type="password"
                 id="password"
                 value={this.state.password}
                 error={this.state.errors.password}
