@@ -4,14 +4,13 @@ import './../sass/App.scss';
 import { ModalRoute } from 'react-router-modal';
 import Modal from './Modal';
 import Profile from './Profile';
-// import {Link}from 'react-router-dom';
 import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
 import useravatar from "./../assets/user.svg";
 import { DragDropContext } from 'react-beautiful-dnd';
 import { logoutUser } from '../api/user.js';
 import { withRouter } from 'react-router-dom';
-import { getDashboard } from '../api/dashboard';
+import { getDashboard, updateDashboard } from '../api/dashboard';
 import { throttle } from "throttle-debounce";
 import { Link } from 'react-router-dom'
 
@@ -109,6 +108,9 @@ class App extends Component {
   };
   saveDashboard = throttle(5000, () => {
     console.log("Saving Dashboard");
+    updateDashboard(this.state.dashboard, this.props.history).then((dashboard) =>{
+      this.setState({ dashboard: dashboard })
+    })
     // Call the backend, pass it the current this.state.dashboard
   });
   onDragEnd = result => {

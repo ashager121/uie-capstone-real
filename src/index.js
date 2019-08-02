@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import Signin from './components/Signin';
 import Signup from './components/Signup';
+import Profile from './components/Profile';
 import * as serviceWorker from './serviceWorker';
 import { ModalContainer } from 'react-router-modal';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
@@ -11,10 +12,11 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 const routing = (
     <Router>
         <Switch>
-            <Route exact path="/" component={Signup} />
-            <Route exact path="/signin" component={Signin} />
+            <Route exact path="/" component={Signin} />
+            <Route exact path="/signup" component={Signup} />
             <Route path="/dashboard" component={App} />
-            <Route path='*' component={Signup} />
+            <Route path='/profile' component={Profile} />
+            <Route path='*' component={Signin} />
         </Switch>
         <ModalContainer />
     </Router>
