@@ -125,6 +125,7 @@ export default class Modal extends Component {
                 if (data.success == true) {
                     this.setState({ task: data.data });
                     this.props.history.push("/dashboard", {refresh: true})
+                    this.props.history.push("/dashboard", { refresh: true })
                 }
                 else {
                     alert(JSON.stringify(data));
@@ -136,6 +137,7 @@ export default class Modal extends Component {
                 if (data.success == true) {
                     this.setState({ task: data.data });
                     this.props.history.push("/dashboard", {refresh: true})
+                    this.props.history.push("/dashboard", { refresh: true })
                 }
                 else {
                     alert(JSON.stringify(data));
