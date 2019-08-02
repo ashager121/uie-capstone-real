@@ -124,7 +124,6 @@ export default class Modal extends Component {
             newTask(this.state.task, this.props.history).then(data => {
                 if (data.success == true) {
                     this.setState({ task: data.data });
-                    this.props.history.push("/dashboard", {refresh: true})
                     this.props.history.push("/dashboard", { refresh: true })
                 }
                 else {
@@ -136,7 +135,6 @@ export default class Modal extends Component {
             updateTask(this.state.task, this.props.history).then(data => {
                 if (data.success == true) {
                     this.setState({ task: data.data });
-                    this.props.history.push("/dashboard", {refresh: true})
                     this.props.history.push("/dashboard", { refresh: true })
                 }
                 else {
