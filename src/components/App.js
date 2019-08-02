@@ -13,6 +13,7 @@ import { logoutUser } from '../api/user.js';
 import { withRouter } from 'react-router-dom';
 import { getDashboard } from '../api/dashboard';
 import { throttle } from "throttle-debounce";
+import { Link } from 'react-router-dom'
 
 class App extends Component {
   constructor() {
@@ -153,7 +154,7 @@ class App extends Component {
           <header className="boardHeader">
             <h1 className="boardHeader_title">Sprint Title</h1>
             <h3>Date Range</h3>
-            <button id='headavatar'><img src={useravatar} alt="user menu"></img>
+            <button id='headavatar'><Link to="/signin"><img src={useravatar} alt="user menu"></img></Link>
             </button>
           </header>
           <div className="filters">
