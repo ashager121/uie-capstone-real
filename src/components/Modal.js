@@ -31,13 +31,13 @@ export default class Modal extends Component {
     }
     renderPriority = () =>{
         if (this.state.task.priority == "lowp") {
-            this.setState({taskPriorityImage: <img src={Low} alt="animal"/> }) 
+            return <img src={Low} alt="animal"/>;
         } else if (this.state.task.priority == 'medp') {
-            this.setState({taskPriorityImage: <img src={Med} alt="animal"/> }) 
+            return <img src={Med} alt="animal"/>;
         } else if (this.state.task.priority == 'highp') {
-            this.setState({taskPriorityImage: <img src={High} alt="animal"/> }) 
+            return <img src={High} alt="animal"/>;
         } else if (this.state.task.priority == 'blockp') {
-            this.setState({taskPriorityImage: <img src={Block} alt="animal"/> }) 
+            return <img src={Block} alt="animal"/>;
         }
         else {
             return 'Select Priority'
@@ -80,7 +80,6 @@ export default class Modal extends Component {
                 priority: event.currentTarget.dataset.value
             }
         });
-        this.renderPriority()
     };
 
 
@@ -163,7 +162,7 @@ export default class Modal extends Component {
                             </div>
                         </div>
                         <div className="dropdown">
-                            <button className="dropbtn">{this.state.taskPriorityImage}</button>
+                            <button className="dropbtn">{this.renderPriority()}</button>
                             <div className="dropdown-content">
                                 <span onClick={this.changePriority} data-value="lowp"><img id='lowp' src={Low} alt="animal"></img></span>
                                 <span onClick={this.changePriority} data-value="medp"><img id='medp' src={Med} alt="animal"></img></span>
