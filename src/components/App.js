@@ -14,7 +14,6 @@ import { withRouter } from 'react-router-dom';
 import { getDashboard } from '../api/dashboard';
 import { throttle } from "throttle-debounce";
 
-
 class App extends Component {
   constructor() {
     super();
@@ -86,7 +85,7 @@ class App extends Component {
     }
   }
   componentDidMount = () => {
-    this.props.history.listen((location)=>{
+    this.props.history.listen((location) => {
       if (location.state && location.state.refresh) {
         this.fetchData();
       }
