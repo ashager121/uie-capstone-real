@@ -87,7 +87,7 @@ class Signin extends React.Component {
             </button>
             <button type="submit" id="signinbtn2" style={{ textDecoration: 'none', color: 'black' }}>
               Sign In
-                    </button>
+            </button>
           </div>
         </form>
       </div >

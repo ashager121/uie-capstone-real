@@ -80,7 +80,7 @@ router.get('/', ()=> {
 
 // -------------- Initialize When Empty -------------------------------------------------------------------------
 
-function initData() {
+async function initData() {
   console.log("No Data Found, initializing with Mock Data");
 
   const fs = require('fs');
@@ -130,7 +130,7 @@ function initData() {
     });
   }
   
-  fs.readFile('./mockData.json', 'utf8', async function(err,data) {
+  await fs.readFile('./mockData.json', 'utf8', async function(err,data) {
     if (err) {
       return ;
     }
@@ -162,6 +162,33 @@ Dashboard.find((err, data) => {
 // this is our get method
 // this method fetches all available data in our database
 
+// @route GET api/dashboard/
+// @desc Gets main dashboard
+// @access Private
+router.get('/api/database/reset', async (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.json({ success: false, redirect: true});
+  }
+
+  Dashboard.remove({}, function(err) {
+    console.log('collection removed');
+    Stack.remove({}, function(err) {
+      console.log('collection removed');
+      Task.remove({}, function(err) {
+        console.log('collection removed');
+        User.remove({}, function(err) {
+          console.log('collection removed');
+          Comment.remove({}, async function(err) {
+            console.log('collection removed');
+
+            await initData();
+            res.json({ success: true });
+          });
+        });
+      });
+    });
+  });
+});
 
 
 

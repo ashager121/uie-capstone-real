@@ -10,6 +10,7 @@ import addbtn from "./../assets/plus.svg";
 import { DragDropContext } from 'react-beautiful-dnd';
 import { withRouter } from 'react-router-dom';
 import { getDashboard, updateDashboard } from '../api/dashboard';
+import { getCurrentUser } from '../api/user';
 import { throttle } from "throttle-debounce";
 import { Link } from 'react-router-dom'
 import Avatar from './Avatar';
@@ -20,69 +21,19 @@ class App extends Component {
     super();
     this.state = /*mockdata*/ {
       isFetching: true,
+      imageUrl: "",
       dashboard: {
         backlog: {
-          tasks: [],
-          imageUrl: ''
-
+          tasks: []
         },
         assigned: {
-          tasks: [
-            {
-              _id: 4,
-              title: "Task Title",
-              category: "code"
-
-            },
-            {
-              _id: 5,
-              title: "Task Title",
-              category: "code"
-            },
-            {
-              _id: 6,
-              title: "Task Title",
-              category: "testing"
-            }
-          ]
+          tasks: []
         },
         inProgress: {
-          tasks: [
-            {
-              _id: 7,
-              title: "Task Title",
-              category: "code"
-            },
-            {
-              _id: 8,
-              title: "Task Title",
-              category: "resources"
-            },
-            {
-              _id: 9,
-              title: "Task Title",
-              category: "testing"
-            }
-          ]
+          tasks: []
         },
         complete: {
-          tasks: [
-            {
-              _id: 10,
-              title: "Task Title",
-              category: "resources"
-            },
-            {
-              _id: 11,
-              title: "Hello There",
-              category: "research"
-            },
-            {
-              _id: 12,
-              title: "Task Title",
-              category: "design"
-            }
-          ]
+          tasks: []
         }
       }
     }
@@ -93,14 +44,15 @@ class App extends Component {
         this.fetchData();
       }
     });
-    Axios.get('/api/users/profile')
-      .then(
-        (response) => { this.setState({ imageUrl: response.data.data.imageUrl }) },
-        (error) => { console.log(error) })
-      .then(
+    this.fetchData();
 
-      )
-
+    getCurrentUser(this.props.history).then(
+      (response) => {
+        if (response && response.success) {
+          this.setState({imageUrl: response.data.imageUrl})
+        }
+      },
+      (error) => { console.log(error) });
   };
   fetchData = () => {
     getDashboard(this.props.history).then((dashboard) => {

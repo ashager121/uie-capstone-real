@@ -63,18 +63,29 @@ router.post("/login", (req, res, next) => {
     return res.status(400).json(errors);
   }
 
-  passport.authenticate('local', (err, user, info)=> {
-    req.login(user, (err) => {
-      var uiUser = {
-        name: user.name,
-        email: user.email,
-        imageUrl: user.imageUrl
-      };
-      return res.json({
-        success: true,
-        user: uiUser
+  return passport.authenticate('local', (err, user, info)=> {
+    if (err) {
+      return res.status(400).json(err);
+    }
+
+    if (user) {
+      req.login(user, (err) => {
+        if (err) {
+          return res.status(400).json(err);
+        }
+        var uiUser = {
+          name: user.name,
+          email: user.email,
+          imageUrl: user.imageUrl
+        };
+        return res.json({
+          success: true,
+          user: uiUser
+        });
       });
-    });
+    } else {
+      return res.status(400).json({email: "Invalid Username/Password"});
+    }
   })(req, res, next);
 });
 
