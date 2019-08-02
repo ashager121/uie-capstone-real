@@ -22,7 +22,7 @@ class App extends Component {
       isFetching: true,
       dashboard: {
         backlog: {
-          tasks: []
+          tasks: [],
         },
         assigned: {
           tasks: [
