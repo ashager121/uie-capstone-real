@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-// import Stack from './Stack';
 import './../sass/App.scss';
-// import { ModalRoute } from 'react-router-modal';
 import Photo from '../assets/user.png';
-// import PropTypes from 'prop-types';
 import Low from '../assets/lowp.png';
 import Med from '../assets/medp.png';
 import High from '../assets/highp.png';
 import Block from '../assets/blockp.png';
 import Avatar from './Avatar';
-import { getTask, updateTask, newTask } from '../api/task';
+import { getTask, updateTask, newTask, deleteTask } from '../api/task';
 import { withRouter } from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -81,6 +78,10 @@ export default class Modal extends Component {
             }
         });
     };
+
+    deleteTaskItem = (id) => {
+        deleteTask(id, this.props.history)
+    }
 
 
     constructor() {
@@ -171,7 +172,7 @@ export default class Modal extends Component {
                             </div>
                         </div>
                     </div>
-                    <form>
+                    <form onSubmit={(e)=> e.preventDefault()}>
                         <input type="text" id="title" onChange={this.handleChange} value={this.state.task.title} />
                         <DatePicker id="dueDate"
                             selected={this.state.task.dueDate}
@@ -193,6 +194,7 @@ export default class Modal extends Component {
                             </div>
                         </div> */}
                         <button className="saveBtn" onClick={this.save}>Save</button>
+                        <button className="deleteBtn" onClick={()=> this.deleteTaskItem(this.state.task._id)}>Delete</button>
                     </form>
                 </div>
             </section>
