@@ -159,7 +159,7 @@ class App extends Component {
             <button id='headavatar'><Link to="/profile"><img src={useravatar} alt="user menu"></img></Link>
             </button>
           </header>
-          <div className="filters">
+          {/* <div className="filters">
             <div className="filters__wrapper">
               <button id="codebtn">Code</button>
               <button id="researchbtn">Research</button>
@@ -167,7 +167,7 @@ class App extends Component {
               <button id="resourcesbtn">Resources</button>
               <button id="testingbtn">Testing</button>
             </div>
-          </div>
+          </div> */}
           <div className="stack_wrapper">
             <h3 className="stack_title">Backlog
               <button id="addcard" onClick={this.newTask}>

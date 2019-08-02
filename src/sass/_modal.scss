@@ -23,6 +23,9 @@
 .dropdown {
     position: relative;
     display: inline-block;
+    width: 125px;
+    max-height: 300px;
+    align-content:center;
 }
 .dropdown-content {
     display: none;
@@ -30,6 +33,12 @@
     background-color: $stacksBgColor;
     min-width: 50px;
     z-index: 1;
+}
+.dropdown-content span{
+    flex-direction: column;
+}
+.priorities {
+    max-height: 50px;
 }
 #title{
     width: 100%;
@@ -72,31 +81,32 @@ input{
 #codecategory, #researchcategory, #designcategory, #resourcescategory, #testingcategory {
     cursor: pointer;
     padding: 5px;
+    margin: 5px;
 }
 #codecategory{
     background-color: $codeColor;
-    border: 20px solid $codeColor;
-    border-radius: 20px;
+    border: 5px solid $codeColor;
+    border-radius: 5px;
 }
 #researchcategory{
     background-color: $researchColor;
-    border: 20px solid $researchColor;
-    border-radius: 20px;
+    border: 5px solid $researchColor;
+    border-radius: 5px;
 }
 #designcategory{
     background-color: $designColor;
-    border: 20px solid $designColor;
-    border-radius: 20px;
+    border: 5px solid $designColor;
+    border-radius: 5px;
 }
 #resourcescategory{
     background-color: $resourcesColor;
-    border: 20px solid $resourcesColor;
-    border-radius: 20px;
+    border: 5px solid $resourcesColor;
+    border-radius: 5px;
 }
 #testingcategory{
     background-color: $testingColor;
-    border: 20px solid $testingColor;
-    border-radius: 20px;
+    border: 5px solid $testingColor;
+    border-radius: 5px;
 }
 .dropdown-content a {
     color: white;
@@ -106,5 +116,5 @@ input{
 }
     
 .dropdown-content a:hover {background-color: white;}
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {display: flex; flex-direction: column;}
 .dropdown:hover .dropbtn {background-color: grey;}

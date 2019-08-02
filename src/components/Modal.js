@@ -37,7 +37,7 @@ export default class Modal extends Component {
             return <img src={Block} alt="animal"/>;
         }
         else {
-            return 'Select Priority'
+            return 'Priority'
         }
     }
 
@@ -165,10 +165,10 @@ export default class Modal extends Component {
                         <div className="dropdown">
                             <button className="dropbtn">{this.renderPriority()}</button>
                             <div className="dropdown-content">
-                                <span onClick={this.changePriority} data-value="lowp"><img id='lowp' src={Low} alt="animal"></img></span>
-                                <span onClick={this.changePriority} data-value="medp"><img id='medp' src={Med} alt="animal"></img></span>
-                                <span onClick={this.changePriority} data-value="highp"><img id='highp' src={High} alt="animal"></img></span>
-                                <span onClick={this.changePriority} data-value="blockp"><img id='blockp' src={Block} alt="animal"></img></span>
+                                <span class="priorities" onClick={this.changePriority} data-value="lowp"><img id='lowp' src={Low} alt="animal"></img></span>
+                                <span class="priorities" onClick={this.changePriority} data-value="medp"><img id='medp' src={Med} alt="animal"></img></span>
+                                <span class="priorities" onClick={this.changePriority} data-value="highp"><img id='highp' src={High} alt="animal"></img></span>
+                                <span class="priorities" onClick={this.changePriority} data-value="blockp"><img id='blockp' src={Block} alt="animal"></img></span>
                             </div>
                         </div>
                     </div>
@@ -180,10 +180,10 @@ export default class Modal extends Component {
                         />
                         <textarea type="text" id="description" onChange={this.handleChange} value={this.state.task.description} />
 
-                        <div className="AssignedUsers">
+                        {/* <div className="AssignedUsers">
                             {this.state.task.assignee.name}
                             <Avatar image={this.state.task.assignee.imageUrl} />
-                        </div>
+                        </div> */}
                         {/* <div className="comments">
                             <div className="comments">
                                 <img src={Photo} alt="user" />
