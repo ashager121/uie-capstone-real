@@ -6,13 +6,15 @@ import Modal from './Modal';
 import Profile from './Profile';
 import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
-import useravatar from "./../assets/user.svg";
+// import useravatar from "./../assets/user.svg";
 import { DragDropContext } from 'react-beautiful-dnd';
 import { logoutUser } from '../api/user.js';
 import { withRouter } from 'react-router-dom';
 import { getDashboard, updateDashboard } from '../api/dashboard';
 import { throttle } from "throttle-debounce";
 import { Link } from 'react-router-dom'
+import Avatar from './Avatar';
+import Axios from 'axios';
 
 class App extends Component {
   constructor() {
@@ -22,6 +24,8 @@ class App extends Component {
       dashboard: {
         backlog: {
           tasks: [],
+          imageUrl: ''
+
         },
         assigned: {
           tasks: [
@@ -90,7 +94,14 @@ class App extends Component {
         this.fetchData();
       }
     });
-    this.fetchData();
+    Axios.get('/api/users/profile')
+      .then(
+        (response) => { this.setState({ imageUrl: response.data.data.imageUrl }) },
+        (error) => { console.log(error) })
+      .then(
+
+      )
+
   };
   fetchData = () => {
     getDashboard(this.props.history).then((dashboard) => {
@@ -156,7 +167,8 @@ class App extends Component {
           <header className="boardHeader">
             <h1 className="boardHeader_title">Sprint Title</h1>
             <h3>Date Range</h3>
-            <button id='headavatar'><Link to="/profile"><img src={useravatar} alt="user menu"></img></Link>
+            {console.log(this.props.history)}
+            <button id='headavatar'><Link to="/profile"><Avatar image={this.state.imageUrl} /></Link>
             </button>
           </header>
           <div className="filters">

@@ -1,22 +1,22 @@
 import Axios from 'axios'
 
-import {redirectToLogin} from './redirectHook';
+import { redirectToLogin } from './redirectHook';
 
 // This returns a promise, which gives the error object.
 export function login(userData, history) {
-    // var userData = {
-    //   name: username,
-    //   password: password
-    // };
+  // var userData = {
+  //   name: username,
+  //   password: password
+  // };
 
-    return Axios.post('/api/users/login', userData)
-      .then(res => {
-        console.log('success ' + res);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-        history.push('/dashboard')
-      }).catch((err) => {
-        return JSON.parse(JSON.stringify(err.response.data));
-      })
+  return Axios.post('/api/users/login', userData)
+    .then(res => {
+      console.log('success ' + res);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      history.push('/dashboard')
+    }).catch((err) => {
+      return JSON.parse(JSON.stringify(err.response.data));
+    })
 }
 
 // This returns a promise, which gives the error object.
@@ -63,7 +63,7 @@ export function logoutUser(history) {
     }).catch((err) => {
       return JSON.parse(JSON.stringify(err.response.data));
     })
-  
+
 }
 
 export function getCurrentUser(history) {
