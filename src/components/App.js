@@ -108,7 +108,7 @@ class App extends Component {
   };
   saveDashboard = throttle(5000, () => {
     console.log("Saving Dashboard");
-    updateDashboard(this.state.dashboard, this.props.history).then((dashboard) =>{
+    updateDashboard(this.state.dashboard, this.props.history).then((dashboard) => {
       this.setState({ dashboard: dashboard })
     })
     // Call the backend, pass it the current this.state.dashboard
@@ -156,7 +156,7 @@ class App extends Component {
           <header className="boardHeader">
             <h1 className="boardHeader_title">Sprint Title</h1>
             <h3>Date Range</h3>
-            <button id='headavatar'><Link to="/signin"><img src={useravatar} alt="user menu"></img></Link>
+            <button id='headavatar'><Link to="/profile"><img src={useravatar} alt="user menu"></img></Link>
             </button>
           </header>
           <div className="filters">

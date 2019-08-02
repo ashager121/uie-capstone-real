@@ -3,8 +3,9 @@ import '../sass/App.scss';
 import React from "react";
 import batonlogo from '../assets/batonlogo.svg';
 import { logoutUser } from "../api/user";
+import { withRouter } from 'react-router-dom'
 
-export class Profile extends React.Component {
+class Profile extends React.Component {
     constructor(props) {
         super(props);
 
