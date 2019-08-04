@@ -150,9 +150,9 @@ export default class Modal extends Component {
             <section className={"modal__wrapper " + this.getCardColor()} >
                 <div className="modal__body">
                     <div className="category-wrapper">
-                        <div className="dropdown">
-                            <button className="dropbtn">Category</button>
-                            <div className="dropdown-content">
+                        <div className="catdropdown">
+                            <button className="catdropbtn">Category</button>
+                            <div className="catdropdown-content">
                                 <span id='codecategory' data-value="code" onClick={this.changeCategory}>Code</span>
                                 <span id='researchcategory' data-value="research" onClick={this.changeCategory}>Research</span>
                                 <span id='designcategory' data-value="design" onClick={this.changeCategory}>Design</span>
@@ -160,9 +160,9 @@ export default class Modal extends Component {
                                 <span id='testingcategory' data-value="testing" onClick={this.changeCategory}>Testing</span>
                             </div>
                         </div>
-                        <div className="dropdown">
-                            <button className="dropbtn">{this.renderPriority()}</button>
-                            <div className="dropdown-content">
+                        <div className="pdropdown">
+                            <button className="pdropbtn">{this.renderPriority()}</button>
+                            <div className="pdropdown-content">
                                 <span class="priorities" onClick={this.changePriority} data-value="lowp"><img id='lowp' src={Low} alt="low priority"></img></span>
                                 <span class="priorities" onClick={this.changePriority} data-value="medp"><img id='medp' src={Med} alt="medium priority"></img></span>
                                 <span class="priorities" onClick={this.changePriority} data-value="highp"><img id='highp' src={High} alt="high priority"></img></span>
@@ -173,6 +173,7 @@ export default class Modal extends Component {
                     <form onSubmit={(e)=> e.preventDefault()}>
                         <input type="text" id="title" placeholder="Add a title..." onChange={this.handleChange} value={this.state.task.title} />
                         <DatePicker id="dueDate"
+                            placeholderText="MM/DD/YYY"
                             selected={this.state.task.dueDate}
                             onChange={this.changeDueDate}
                         />
