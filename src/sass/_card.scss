@@ -1,7 +1,8 @@
 .board__card{
     background-color: $dashboardBgColor;
     border-radius: 10px;
-    margin: 10px 0px 0px;
+    // margin: 10px 0px 0px;
+    margin-top: 10px;
 }
 .board__card--code{
     padding-left: 20px;
@@ -22,14 +23,4 @@
 .board__card--testing{
     padding-left: 20px;
     border: 2px solid $testingColor;
-}
-.categorywrapper{
-    height: 30px;
-    width: 80px;
-    background-color: $codeColor;
-    border-radius: 10px 0px 6px 0px;
-    text-align: center;
-}
-.categorywrapper h4{
-    padding-top: 5px;
 }

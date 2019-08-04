@@ -1,16 +1,25 @@
 .modal__wrapper{
-    height:50%;
+    height:70%;
     background-color: $dashboardBgColor;
+    border-radius: 5px;
 }
 .modal__body{
     padding: 0px 20px 20px 20px;
-    margin-left: 20px;
+}
+#infoform{
+    padding: 20px 20px 0px 20px;
 }
 .category-wrapper{
-    display: flex;
-    justify-content: flex-end;
-    padding: 20px;
-    margin: 0px 20px;
+    padding: 10px 20px;
+    text-align: center;
+}
+.category-wrapper2{
+    // display: inline-block;
+    // padding: 20px;
+    // margin: 0px 40px 0px 20px;
+    text-align: center;
+    height: 50px;
+    margin: 40px 20px 20px 20px;
 }
 .catdropbtn {
     background-color:$dashboardBgColor;
@@ -18,7 +27,7 @@
     padding: 16px;
     font-size: 16px;
     border: none;
-    margin-right: 50px;
+    text-transform: capitalize;
 } 
 .catdropdown {
     position: relative;
@@ -146,7 +155,8 @@ input{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 60px;
+    margin-bottom: 30px;
 }
 .saveBtn, .deleteBtn{
     width: 100px;

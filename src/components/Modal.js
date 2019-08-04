@@ -151,7 +151,7 @@ export default class Modal extends Component {
                 <div className="modal__body">
                     <div className="category-wrapper">
                         <div className="catdropdown">
-                            <button className="catdropbtn">Category</button>
+                            <button className="catdropbtn">Category: {this.state.task.category}</button>
                             <div className="catdropdown-content">
                                 <span id='codecategory' data-value="code" onClick={this.changeCategory}>Code</span>
                                 <span id='researchcategory' data-value="research" onClick={this.changeCategory}>Research</span>
@@ -160,17 +160,8 @@ export default class Modal extends Component {
                                 <span id='testingcategory' data-value="testing" onClick={this.changeCategory}>Testing</span>
                             </div>
                         </div>
-                        <div className="pdropdown">
-                            <button className="pdropbtn">{this.renderPriority()}</button>
-                            <div className="pdropdown-content">
-                                <span class="priorities" onClick={this.changePriority} data-value="lowp"><img id='lowp' src={Low} alt="low priority"></img></span>
-                                <span class="priorities" onClick={this.changePriority} data-value="medp"><img id='medp' src={Med} alt="medium priority"></img></span>
-                                <span class="priorities" onClick={this.changePriority} data-value="highp"><img id='highp' src={High} alt="high priority"></img></span>
-                                <span class="priorities" onClick={this.changePriority} data-value="blockp"><img id='blockp' src={Block} alt="item blocked"></img></span>
-                            </div>
-                        </div>
                     </div>
-                    <form onSubmit={(e)=> e.preventDefault()}>
+                    <form id="infoform" onSubmit={(e)=> e.preventDefault()}>
                         <input type="text" id="title" placeholder="Add a title..." onChange={this.handleChange} value={this.state.task.title} />
                         <DatePicker id="dueDate"
                             placeholderText="MM/DD/YYY"
@@ -193,6 +184,17 @@ export default class Modal extends Component {
                         </div> */}
                         <div id="functionbtns">
                             <button className="deleteBtn" onClick={()=> this.deleteTaskItem(this.state.task._id)}>Delete</button>
+                            <div className="category-wrapper2">
+                                <div className="pdropdown">
+                                    <button className="pdropbtn">{this.renderPriority()}</button>
+                                    <div className="pdropdown-content">
+                                        <span class="priorities" onClick={this.changePriority} data-value="lowp"><img id='lowp' src={Low} alt="low priority"></img></span>
+                                        <span class="priorities" onClick={this.changePriority} data-value="medp"><img id='medp' src={Med} alt="medium priority"></img></span>
+                                        <span class="priorities" onClick={this.changePriority} data-value="highp"><img id='highp' src={High} alt="high priority"></img></span>
+                                        <span class="priorities" onClick={this.changePriority} data-value="blockp"><img id='blockp' src={Block} alt="item blocked"></img></span>
+                                    </div>
+                                </div>
+                            </div>
                             <button className="saveBtn" onClick={this.save}>Save</button>
                         </div>
                     </form>
