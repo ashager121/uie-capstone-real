@@ -52,7 +52,7 @@ class Signin extends React.Component {
             <div className="SignIn__form">
               <label className="SignIn__label">
                 Email Address
-                            </label>
+              </label>
               <input
                 type="text"
                 id="email"
@@ -63,11 +63,9 @@ class Signin extends React.Component {
                 })}
                 onChange={this.handleChange} />
               <span className="red-text">{this.state.errors.email}</span>
-
-
               <label className="SignIn__label">
                 Password
-                            </label>
+              </label>
               <input
                 type="password"
                 id="password"
@@ -80,14 +78,9 @@ class Signin extends React.Component {
               <span className="red-text">{this.state.errors.password}</span>
             </div>
           </div>
-
           <div className="buttons">
-            <button id="signupbtn2" style={{ textDecoration: 'none', color: 'white' }}>
-              <Link to="/signup" style={{ textDecoration: 'none', color: 'white' }}>Sign Up</Link>
-            </button>
-            <button type="submit" id="signinbtn2" style={{ textDecoration: 'none', color: 'black' }}>
-              Sign In
-            </button>
+            <Link to="/signup" id="signupbtn2">Sign Up</Link>
+            <button type="submit" id="signinbtn2">Sign In</button>
           </div>
         </form>
       </div >

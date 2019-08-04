@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-// import Comment from './assets/comment.png';
-// import Priority from './assets/priority.png';
-import './../sass/App.scss';
-// import Modal from 'react-router-modal';
-// import Photo from '../assets/user.png';
-// import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Draggable } from 'react-beautiful-dnd';
 
@@ -36,8 +30,9 @@ class Card extends Component {
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
                     >
+                        <div>
                     <h3>{task.title}</h3>
-                    <h6>{task.duedate}</h6>
+                    </div>
                     </div>
                 )}
             </Draggable>

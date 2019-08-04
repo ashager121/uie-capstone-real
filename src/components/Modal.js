@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import './../sass/App.scss';
-import Photo from '../assets/user.png';
 import Low from '../assets/lowp.png';
 import Med from '../assets/medp.png';
 import High from '../assets/highp.png';
 import Block from '../assets/blockp.png';
-import Avatar from './Avatar';
 import { getTask, updateTask, newTask, deleteTask } from '../api/task';
-import { withRouter } from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -27,14 +24,14 @@ export default class Modal extends Component {
         }
     }
     renderPriority = () =>{
-        if (this.state.task.priority == "lowp") {
-            return <img src={Low} alt="animal"/>;
-        } else if (this.state.task.priority == 'medp') {
-            return <img src={Med} alt="animal"/>;
-        } else if (this.state.task.priority == 'highp') {
-            return <img src={High} alt="animal"/>;
-        } else if (this.state.task.priority == 'blockp') {
-            return <img src={Block} alt="animal"/>;
+        if (this.state.task.priority === "lowp") {
+            return <img src={Low} alt="low priority"/>;
+        } else if (this.state.task.priority === 'medp') {
+            return <img src={Med} alt="medium priority"/>;
+        } else if (this.state.task.priority === 'highp') {
+            return <img src={High} alt="high priority"/>;
+        } else if (this.state.task.priority === 'blockp') {
+            return <img src={Block} alt="item blocked"/>;
         }
         else {
             return 'Priority'
@@ -80,7 +77,7 @@ export default class Modal extends Component {
     };
 
     deleteTaskItem = (id) => {
-        deleteTask(id, this.props.history)
+        deleteTask(id, this.props.history).then(()=>{this.props.history.push("/dashboard", { refresh:true })})
     }
 
 
@@ -93,6 +90,7 @@ export default class Modal extends Component {
                     description: "",
                     category: "",
                     priority: "",
+                    dueDate: "",
                     assignee: {
                         name: "",
                         imageUrl: "",
@@ -108,7 +106,7 @@ export default class Modal extends Component {
     }
 
     componentDidMount = () => {
-        if (this.props.match.params.taskId == 'new') {
+        if (this.props.match.params.taskId === 'new') {
             this.setState({ isNewTask: true })
         }
         else {
@@ -126,7 +124,7 @@ export default class Modal extends Component {
         event.preventDefault();
         if (this.state.isNewTask) {
             newTask(this.state.task, this.props.history).then(data => {
-                if (data.success == true) {
+                if (data.success === true) {
                     this.setState({ task: data.data });
                     this.props.history.push("/dashboard", { refresh: true })
                 }
@@ -137,7 +135,7 @@ export default class Modal extends Component {
         }
         else {
             updateTask(this.state.task, this.props.history).then(data => {
-                if (data.success == true) {
+                if (data.success === true) {
                     this.setState({ task: data.data });
                     this.props.history.push("/dashboard", { refresh: true })
                 }
@@ -165,21 +163,20 @@ export default class Modal extends Component {
                         <div className="dropdown">
                             <button className="dropbtn">{this.renderPriority()}</button>
                             <div className="dropdown-content">
-                                <span class="priorities" onClick={this.changePriority} data-value="lowp"><img id='lowp' src={Low} alt="animal"></img></span>
-                                <span class="priorities" onClick={this.changePriority} data-value="medp"><img id='medp' src={Med} alt="animal"></img></span>
-                                <span class="priorities" onClick={this.changePriority} data-value="highp"><img id='highp' src={High} alt="animal"></img></span>
-                                <span class="priorities" onClick={this.changePriority} data-value="blockp"><img id='blockp' src={Block} alt="animal"></img></span>
+                                <span class="priorities" onClick={this.changePriority} data-value="lowp"><img id='lowp' src={Low} alt="low priority"></img></span>
+                                <span class="priorities" onClick={this.changePriority} data-value="medp"><img id='medp' src={Med} alt="medium priority"></img></span>
+                                <span class="priorities" onClick={this.changePriority} data-value="highp"><img id='highp' src={High} alt="high priority"></img></span>
+                                <span class="priorities" onClick={this.changePriority} data-value="blockp"><img id='blockp' src={Block} alt="item blocked"></img></span>
                             </div>
                         </div>
                     </div>
                     <form onSubmit={(e)=> e.preventDefault()}>
-                        <input type="text" id="title" onChange={this.handleChange} value={this.state.task.title} />
+                        <input type="text" id="title" placeholder="Add a title..." onChange={this.handleChange} value={this.state.task.title} />
                         <DatePicker id="dueDate"
                             selected={this.state.task.dueDate}
                             onChange={this.changeDueDate}
                         />
-                        <textarea type="text" id="description" onChange={this.handleChange} value={this.state.task.description} />
-
+                        <textarea type="text" id="description" placeholder="Add a description..." onChange={this.handleChange} value={this.state.task.description} />
                         {/* <div className="AssignedUsers">
                             {this.state.task.assignee.name}
                             <Avatar image={this.state.task.assignee.imageUrl} />
@@ -193,8 +190,10 @@ export default class Modal extends Component {
                             })}
                             </div>
                         </div> */}
-                        <button className="saveBtn" onClick={this.save}>Save</button>
-                        <button className="deleteBtn" onClick={()=> this.deleteTaskItem(this.state.task._id)}>Delete</button>
+                        <div id="functionbtns">
+                            <button className="deleteBtn" onClick={()=> this.deleteTaskItem(this.state.task._id)}>Delete</button>
+                            <button className="saveBtn" onClick={this.save}>Save</button>
+                        </div>
                     </form>
                 </div>
             </section>

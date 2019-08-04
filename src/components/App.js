@@ -3,10 +3,8 @@ import Stack from './Stack';
 import './../sass/App.scss';
 import { ModalRoute } from 'react-router-modal';
 import Modal from './Modal';
-import Profile from './Profile';
 import 'react-router-modal/css/react-router-modal.css';
 import addbtn from "./../assets/plus.svg";
-// import useravatar from "./../assets/user.svg";
 import { DragDropContext } from 'react-beautiful-dnd';
 import { withRouter } from 'react-router-dom';
 import { getDashboard, updateDashboard } from '../api/dashboard';
@@ -14,7 +12,7 @@ import { getCurrentUser } from '../api/user';
 import { throttle } from "throttle-debounce";
 import { Link } from 'react-router-dom'
 import Avatar from './Avatar';
-import Axios from 'axios';
+import cobra from '../assets/avatars/cobra.svg';
 
 class App extends Component {
   constructor() {
@@ -56,7 +54,6 @@ class App extends Component {
   };
   fetchData = () => {
     getDashboard(this.props.history).then((dashboard) => {
-      // console.log("App: " + dashboard);
       console.log(dashboard);
       this.setState({ dashboard: dashboard, isFetching: false });
     });
@@ -73,7 +70,7 @@ class App extends Component {
     // Call the backend, pass it the current this.state.dashboard
   });
   onDragEnd = result => {
-    const { destination, source, draggableId } = result;
+    const { destination, source } = result;
 
     if (!destination) {
       return;
@@ -112,11 +109,12 @@ class App extends Component {
       <div>
         <div className="App" >
           <header className="boardHeader">
-            <h1 className="boardHeader_title">Sprint Title</h1>
-            <h3>Date Range</h3>
-            {console.log(this.props.history)}
-            <button id='headavatar'><Link to="/profile"><Avatar image={this.state.imageUrl} /></Link>
+            <h1 className="boardHeader_title">SAAS Design Sprint</h1>
+            <h3>8/3/2020 - 8/10/2020</h3>
+            <button id='headavatar'><Link to="/profile"><img src={cobra} /></Link>
             </button>
+            {/* <button id='headavatar'><Link to="/profile"><Avatar image={this.state.imageUrl} /></Link>
+            </button> */}
           </header>
           {/* <div className="filters">
             <div className="filters__wrapper">

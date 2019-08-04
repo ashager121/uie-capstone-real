@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../sass/App.scss';
 import React from "react";
-import batonlogo from '../assets/batonlogo.svg';
 import { logoutUser } from "../api/user";
 import { withRouter } from 'react-router-dom';
 // import Avatar from './Avatar';
@@ -14,6 +13,7 @@ import hippo from '../assets/avatars/hippo.svg';
 import lion from '../assets/avatars/lion.svg';
 import mouse from '../assets/avatars/mouse.svg';
 import rabbit from '../assets/avatars/rabbit.svg';
+import backarrow from "../assets/backarrow.svg";
 
 class Profile extends React.Component {
     constructor(props) {
@@ -64,19 +64,16 @@ class Profile extends React.Component {
         return (
 
             <div className="ProfileContainer" >
-                <button id="backbtn" style={{ textDecoration: 'none', color: 'black' }}>
-                    <Link to="/dashboard" style={{ textDecoration: 'none', color: 'black' }}>Back</Link>
-                </button>
-
-                {/* <img src={batonlogo} alt="Logo" /> */}
-
+                <Link to='/dashboard' replace id="backbtn">
+                    <img id="backarrow" src={backarrow}/>
+                </Link>
                 <div className="Profile">
                     <div className="Profile__img">
                         <img src={cobra} alt="profile image"></img>
                     </div>
                     <div className="Profile__detail">
-                        <h2>Name: Bob Ross</h2>
-                        <h2>Email: bob@gmail.com</h2>
+                        <h3>Name: Bob Ross</h3>
+                        <h3>Email: bob@gmail.com</h3>
                     </div>
                     {/* <div className="buttons"> */}
                     <div className="button">
@@ -86,9 +83,6 @@ class Profile extends React.Component {
                             Edit
                     </button> */}
                     {/* </div> */}
-
-
-
                     {/* <form className="Profile__form" onSubmit={this.handleSubmit}>
                         <label className="Profile__label">
                             Update Name

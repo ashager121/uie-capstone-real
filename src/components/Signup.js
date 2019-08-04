@@ -92,23 +92,19 @@ export default class Signup extends React.Component {
                             </label>
                         <input className="SignUp__input" type="text" value={this.state.value}
                             onChange={this.handleChange} />
-
                         <label className="SignUp__label">
                             Password
                             </label>
                         <input className="SignUp__input" type="password" value={this.state.value}
                             onChange={this.handleChange} />
-
                         <label className="SignUp__label">
                             Confirm Password
                             </label>
                         <input className="SignUp__input" type="password" value={this.state.value}
                             onChange={this.handleChange} />
-
                         <label className="SignUp__label">
-                            Avatar
+                            Pick an animal avatar...
                             </label>
-
                         <div className="avatars">
                             {this.state.avatars.map((avatar) => {
                                 return <div className="col">
@@ -118,18 +114,11 @@ export default class Signup extends React.Component {
                                     />
                                 </div>
                             })}
-
                         </div>
-
                         <div className="buttons">
-                            <button id="signinbtn1">
-                                <Link to="/signin" style={{ textDecoration: 'none', color: 'white' }}>Sign In</Link>
-                            </button>
-                            <button id="signupbtn1">
-                                <Link to="/dashboard" style={{ textDecoration: 'none', color: 'black' }}>Sign Up</Link>
-                            </button>
+                            <Link to="/signin" id="signinbtn1">Sign In</Link>
+                            <button type="submit" id="signupbtn1">Sign Up</button>
                         </div>
-
                     </form>
                 </div>
             </div>

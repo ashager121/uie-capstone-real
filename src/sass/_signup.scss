@@ -15,7 +15,7 @@
 }
 .SignUp__label {
   font-size: .7rem;
-  padding-top: 10px;
+  padding: 25px 0px 10px;
 }
 .SignUp__input {
   width: 100%;
@@ -33,17 +33,19 @@
   padding-bottom: 50px;
 }
 #signinbtn1 {
-  background-color: $dashboardBgColor;
   color: white;
-  border-radius: 5px;
-  padding: 10px 20px;
   cursor: pointer;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: solid 2px white;
+  border-radius: 5px;
 }
 #signupbtn1 {
-  background-color: white;
-  border-radius: 5px;
-  padding: 5px 20px;
   cursor: pointer;
+  font-size: .9rem;
+  padding: 10px 20px;
+  border: solid 2px white;
+  border-radius: 5px;
 }
 .avatars {
   display: flex;
