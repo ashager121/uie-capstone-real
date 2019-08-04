@@ -4,21 +4,25 @@
   align-content: center;
   padding-top: 100px;
 }
-.SignIn {
-  padding-top: 50px;
+#welcome {
+  margin-top: 50px;
+  background-color: rgb(21, 21, 235);
+  padding: 5px 15px;
+  border-radius: 10px;
 }
 .SignIn__form{
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding-right: 20px;
+  // padding-right: 20px;
 }
 .SignIn__label {
   font-size: .7rem;
   padding: 25px 0px 10px;
 }
 .SignIn__input {
-  width: 100%;
+  width: 95%;
   border-radius: 5px;
   background-color: $stacksBgColor;
   color: white;

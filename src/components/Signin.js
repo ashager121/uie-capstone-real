@@ -47,6 +47,11 @@ class Signin extends React.Component {
     return (
       <div className="SigninContainer">
         <img src={batonlogo} alt="Logo" />
+        <div id="welcome">
+          <p>Thanks for trying out Baton! For demo mode log in with these credentials:</p>
+          <h5>Email: bob@gmail.com</h5>
+          <h5>Password: bob</h5>
+        </div>
         <form className="SignIn__form" onSubmit={this.handleSubmit}>
           <div className="SignIn">
             <div className="SignIn__form">
