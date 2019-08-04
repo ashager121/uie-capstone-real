@@ -3,7 +3,6 @@ import "../sass/App.scss";
 import React from "react";
 import { logoutUser } from "../api/user";
 import { withRouter } from "react-router-dom";
-// import Avatar from './Avatar';
 import anteater from "../assets/avatars/anteater.svg";
 import cobra from "../assets/avatars/cobra.svg";
 import crab from "../assets/avatars/crab.svg";
@@ -74,7 +73,6 @@ class Profile extends React.Component {
             <h3>Name: Bob Ross</h3>
             <h3>Email: bob@gmail.com</h3>
           </div>
-          {/* <div className="buttons"> */}
           <div className="button">
             <button onClick={this.logout} id="logoutbtn">
               Logout
@@ -84,7 +82,7 @@ class Profile extends React.Component {
                             Edit
                     </button> */}
           {/* </div> */}
-          {/* <form className="Profile__form" onSubmit={this.handleSubmit}>
+          {/*   <form className="Profile__form" onSubmit={this.handleSubmit}>
                         <label className="Profile__label">
                             Update Name
                             </label>
@@ -131,8 +129,8 @@ class Profile extends React.Component {
                             <button type="submit" id="savebtn" style={{ textDecoration: 'none', color: 'black' }}>
                                 Save
                     </button>
-                        </div>
-                    </form> */}
+                </div>
+            </form> */}
         </div>
       </div>
     );

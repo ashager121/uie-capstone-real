@@ -105,8 +105,6 @@ export default class Modal extends Component {
       this.setState({ isNewTask: true });
     } else {
       getTask(this.props.match.params.taskId, this.props.history).then(task => {
-        // console.log("App: " + dashboard);
-        console.log(task);
         this.setState({ task: task.data, isFetching: false }, () =>
           this.renderPriority()
         );

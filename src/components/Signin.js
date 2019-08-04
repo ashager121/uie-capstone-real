@@ -1,4 +1,3 @@
-// import './node_modules/react-router-modal/css/react-router-modal.css';
 import "./../sass/App.scss";
 import React from "react";
 import batonlogo from "../assets/batonlogo.svg";
