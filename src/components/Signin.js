@@ -1,11 +1,11 @@
 // import './node_modules/react-router-modal/css/react-router-modal.css';
-import './../sass/App.scss';
-import React from 'react'
-import batonlogo from '../assets/batonlogo.svg'
-import { Link } from 'react-router-dom'
-import { login } from '../api/user'
-import { withRouter } from 'react-router-dom'
-import classnames from 'classnames'
+import "./../sass/App.scss";
+import React from "react";
+import batonlogo from "../assets/batonlogo.svg";
+import { Link } from "react-router-dom";
+import { login } from "../api/user";
+import { withRouter } from "react-router-dom";
+import classnames from "classnames";
 
 class Signin extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class Signin extends React.Component {
     this.setState({
       [event.target.id]: event.target.value
     });
-  }
+  };
 
   handleSubmit = event => {
     event.preventDefault();
@@ -35,29 +35,30 @@ class Signin extends React.Component {
       password: this.state.password
     };
 
-    login(userData, this.props.history).then((err) => {
+    login(userData, this.props.history).then(err => {
       console.log(err);
       if (err) {
         this.setState({ errors: err });
       }
     });
-  }
+  };
 
   render() {
     return (
       <div className="SigninContainer">
         <img src={batonlogo} alt="Logo" />
         <div id="welcome">
-          <p>Thanks for trying out Baton! For demo mode log in with these credentials:</p>
+          <p>
+            Thanks for trying out Baton! For demo mode log in with these
+            credentials:
+          </p>
           <h5>Email: bob@gmail.com</h5>
           <h5>Password: bob</h5>
         </div>
         <form className="SignIn__form" onSubmit={this.handleSubmit}>
           <div className="SignIn">
             <div className="SignIn__form">
-              <label className="SignIn__label">
-                Email Address
-              </label>
+              <label className="SignIn__label">Email Address</label>
               <input
                 type="text"
                 id="email"
@@ -66,11 +67,10 @@ class Signin extends React.Component {
                 className={classnames("SignIn__input", {
                   invalid: this.state.errors.email
                 })}
-                onChange={this.handleChange} />
+                onChange={this.handleChange}
+              />
               <span className="red-text">{this.state.errors.email}</span>
-              <label className="SignIn__label">
-                Password
-              </label>
+              <label className="SignIn__label">Password</label>
               <input
                 type="password"
                 id="password"
@@ -79,16 +79,21 @@ class Signin extends React.Component {
                 className={classnames("SignIn__input", {
                   invalid: this.state.errors.password
                 })}
-                onChange={this.handleChange} />
+                onChange={this.handleChange}
+              />
               <span className="red-text">{this.state.errors.password}</span>
             </div>
           </div>
           <div className="buttons">
-            <Link to="/signup" id="signupbtn2">Sign Up</Link>
-            <button type="submit" id="signinbtn2">Sign In</button>
+            <Link to="/signup" id="signupbtn2">
+              Sign Up
+            </Link>
+            <button type="submit" id="signinbtn2">
+              Sign In
+            </button>
           </div>
         </form>
-      </div >
+      </div>
     );
   }
 }
