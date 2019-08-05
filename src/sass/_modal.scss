@@ -7,6 +7,11 @@
 .modal__body{
     padding: 0px 20px 20px 20px;
 }
+#closebtn{
+    position: absolute;
+    left: 90%;
+    top: 10%;
+}
 #infoform{
     padding: 20px 20px 0px 20px;
 }
@@ -174,6 +179,11 @@ input{
     }
     .modal__body{
         padding: 0px 20px 0px 0px;
+    }
+    #closebtn{
+        position: absolute;
+        left: 85%;
+        top: 5%;
     }
     .category-wrapper2{
         margin: 10px 10px 10px 10px;

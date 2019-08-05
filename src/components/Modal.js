@@ -4,9 +4,11 @@ import Low from "../assets/lowp.png";
 import Med from "../assets/medp.png";
 import High from "../assets/highp.png";
 import Block from "../assets/blockp.png";
+import Close from "../assets/closeicon.svg";
 import { getTask, updateTask, newTask, deleteTask } from "../api/task";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Link } from "react-router-dom";
 
 export default class Modal extends Component {
   getCardColor() {
@@ -182,6 +184,9 @@ export default class Modal extends Component {
               </div>
             </div>
           </div>
+          <Link to="/dashboard" id="closebtn">
+            <img src={ Close } alt="close modal" />
+          </Link>
           <form id="infoform" onSubmit={e => e.preventDefault()}>
             <input
               type="text"
