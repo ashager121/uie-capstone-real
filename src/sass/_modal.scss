@@ -48,11 +48,12 @@
     color: white;
     padding: 20px;
     border: none;
-} 
+    width: 100%;
+    margin: 0 auto;
+}
 .pdropdown {
     position: relative;
     display: inline-block;
-    max-height: 300px;
     align-content:center;
 }
 .pdropdown-content {
@@ -64,9 +65,6 @@
 }
 .pdropdown-content span{
     flex-direction: column;
-}
-.priorities {
-    max-height: 50px;
 }
 #title{
     width: 100%;
@@ -88,26 +86,22 @@ input{
 }
 #lowp{
     padding: 5px;
-    max-height: 75%;
-    max-width: 75%;
+    max-width: 70px;
     cursor: pointer;
 }
 #medp{
     padding: 5px;
-    max-height: 75%;
-    max-width: 75%;
+    max-width: 70px;
     cursor: pointer;
 }
 #highp{
     padding: 5px;
-    max-height: 75%;
-    max-width: 75%;
+    max-width: 70px;
     cursor: pointer;
 }
 #blockp{
     padding: 5px;
-    max-height: 75%;
-    max-width: 75%;
+    max-width: 70px;
     cursor: pointer;
 }
 #codecategory, #researchcategory, #designcategory, #resourcescategory, #testingcategory {
