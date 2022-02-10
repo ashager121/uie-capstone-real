@@ -8,7 +8,7 @@
     "create-react-app": "^3.0.1",
     "http-proxy-middleware": "^0.19.1",
     "jwt-decode": "^2.2.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "npm": "^6.10.1",
     "react": "^16.8.6",
     "react-beautiful-dnd": "^11.0.5",
